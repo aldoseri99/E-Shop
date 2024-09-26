@@ -1,13 +1,15 @@
-const express = require("express")
-const mongoose = require("mongoose")
+const express = require('express')
+const mongoose = require('mongoose')
 
 //PORT Configurations
 
 const PORT = process.env.PORT
 
-//intitialize express
+//initialize express
 
 const app = express()
+
+const db = require('./config/db')
 
 app.listen(PORT, () => {
   console.log(`app listening on port ${PORT}`)
