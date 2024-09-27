@@ -1,0 +1,23 @@
+<h5>Add category</h5>
+
+<form action="/category/update" method="POST">
+  <div>
+    <label class="form-label">name</label>
+    <input
+      type="text"
+      name="name"
+      placeholder="Enter category"
+      class="form-control mb-3"
+      value="<%= category.name %>"
+    />
+  </div>
+
+  
+  <div class="d-grid"></div>
+    <button type="submit" class="btn btn-success btn-sm">
+      update category
+    </button>
+  </div>
+
+  <input type="hidden" name="id" value="<%= category._id %>">
+</form>
