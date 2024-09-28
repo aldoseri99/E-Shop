@@ -1,0 +1,11 @@
+<h1>categories</h1>
+
+<% categories.forEach(function(category){ %>
+
+<div>
+  <h3><%= category.name %></h3>
+  <a href="/category/edit?id=<%= category._id %>">edit</a>
+  <a href="/category/delete?id=<%= category._id %>">delete</a>
+</div>
+
+<% }) %>
