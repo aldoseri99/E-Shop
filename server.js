@@ -39,10 +39,12 @@ app.use((req, res, next) => {
 
 //import routes
 const categoryRouter = require('./routes/category')
+const userRouter = require('./routes/user')
 const authRouter = require('./routes/auth')
 
 //mount routes
 app.use('/category', categoryRouter)
+app.use('/user', userRouter)
 app.use('/', authRouter)
 
 app.listen(PORT, () => {
