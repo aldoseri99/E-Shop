@@ -2,7 +2,8 @@ const mongoose = require('mongoose')
 
 const userSchema = mongoose.Schema(
   {
-    name: String,
+    firstName: String,
+    lastName: String,
     googleId: {
       type: String,
       required: true
@@ -10,13 +11,14 @@ const userSchema = mongoose.Schema(
     email: String,
     avatar: String,
     phone: String,
-    type: String
+    type: String,
+    allData: {}
   },
   {
     timestamps: true
   }
 )
 
-const Uyser = mongoose.model('Uyser', userSchema)
+const User = mongoose.model('User', userSchema)
 
-module.exports = Uyser
+module.exports = User

@@ -4,21 +4,22 @@ const mongoose = require('mongoose')
 const session = require('express-session')
 const passport = require('passport')
 
-//PORT Configurations
+// dotenv configuration
+require('dotenv').config()
 
+//PORT Configurations
 const PORT = 4000
 
 //initialize express
-
 const app = express()
 
 const db = require('./config/db')
 
-//shorten acces to views folder
-
+//shorten access to views folder
 app.set('view engine', 'ejs')
 
 // Passport and session configuration
+require('./config/passport')
 app.use(
   session({
     secret: process.env.SECRET,
@@ -38,9 +39,11 @@ app.use((req, res, next) => {
 
 //import routes
 const categoryRouter = require('./routes/category')
+const authRouter = require('./routes/auth')
 
 //mount routes
 app.use('/category', categoryRouter)
+app.use('/', authRouter)
 
 app.listen(PORT, () => {
   console.log(`app listening on port ${PORT}`)
