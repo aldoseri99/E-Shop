@@ -5,12 +5,10 @@ const itemsSchema = mongoose.Schema(
     name: String,
     Price: Number,
     qty: Number,
-    category: [
-      {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'Category'
-      }
-    ]
+    category: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'Category'
+    }
   },
   {
     timestamps: true
