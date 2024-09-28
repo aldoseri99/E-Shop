@@ -1,5 +1,5 @@
-const express = require("express")
-const mongoose = require("mongoose")
+const express = require('express')
+const mongoose = require('mongoose')
 
 //PORT Configurations
 
@@ -9,17 +9,17 @@ const PORT = 4000
 
 const app = express()
 
-const db = require("./config/db")
+const db = require('./config/db')
 
 //shorten acces to views folder
 
-app.set("view engine", "ejs")
+app.set('view engine', 'ejs')
 
 //import routes
-const categoryRouter = require("./routes/category")
+const categoryRouter = require('./routes/category')
 
 //mount routes
-app.use("/category", categoryRouter)
+app.use('/category', categoryRouter)
 
 app.listen(PORT, () => {
   console.log(`app listening on port ${PORT}`)
