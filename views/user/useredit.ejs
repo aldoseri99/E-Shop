@@ -1,0 +1,11 @@
+<form method="POST" action="/user/useredit">
+  <h1><%=account.firstName%> <%=account.lastName%></h1>
+  <h1><%=account.email%></h1>
+  <select name="type" id="">
+    <option value="admin">Admin</option>
+    <option value="seller">Seller</option>
+    <option value="costumer">Costumer</option>
+  </select>
+  <input name="id" value="<%=account._id%>" type="hidden" />
+  <button type="submit">Confirm Edit</button>
+</form>
