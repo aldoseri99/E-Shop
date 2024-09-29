@@ -1,6 +1,8 @@
 const express = require('express')
 const mongoose = require('mongoose')
 
+const expressLayouts = require('express-ejs-layouts')
+
 const session = require('express-session')
 const passport = require('passport')
 
@@ -14,6 +16,8 @@ const PORT = 4000
 const app = express()
 
 const db = require('./config/db')
+
+app.use(expressLayouts)
 
 app.use(express.static('public'))
 
