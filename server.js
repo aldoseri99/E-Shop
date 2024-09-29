@@ -1,11 +1,11 @@
-const express = require('express')
-const mongoose = require('mongoose')
+const express = require("express")
+const mongoose = require("mongoose")
 
-const session = require('express-session')
-const passport = require('passport')
+const session = require("express-session")
+const passport = require("passport")
 
 // dotenv configuration
-require('dotenv').config()
+require("dotenv").config()
 
 //PORT Configurations
 const PORT = 4000
@@ -13,18 +13,18 @@ const PORT = 4000
 //initialize express
 const app = express()
 
-const db = require('./config/db')
+const db = require("./config/db")
 
 //shorten access to views folder
-app.set('view engine', 'ejs')
+app.set("view engine", "ejs")
 
 // Passport and session configuration
-require('./config/passport')
+require("./config/passport")
 app.use(
   session({
     secret: process.env.SECRET,
     reverse: false,
-    saveUninitialized: true
+    saveUninitialized: true,
   })
 )
 
@@ -38,14 +38,16 @@ app.use((req, res, next) => {
 })
 
 //import routes
-const categoryRouter = require('./routes/category')
-const userRouter = require('./routes/user')
-const authRouter = require('./routes/auth')
+const itemRouter = require("./routes/item")
+const categoryRouter = require("./routes/category")
+const userRouter = require("./routes/user")
+const authRouter = require("./routes/auth")
 
 //mount routes
-app.use('/category', categoryRouter)
-app.use('/user', userRouter)
-app.use('/', authRouter)
+app.use("/item", itemRouter)
+app.use("/category", categoryRouter)
+app.use("/user", userRouter)
+app.use("/", authRouter)
 
 app.listen(PORT, () => {
   console.log(`app listening on port ${PORT}`)

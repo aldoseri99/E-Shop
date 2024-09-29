@@ -1,0 +1,31 @@
+<h1>Add item</h1>
+
+<form action="/item/add" method="POST">
+  <div>
+    <label>category</label>
+    <select name="author" class="form-control">
+      <% categories.forEach(function(category){ %>
+
+      <option value="<%= category._id %>"><%=category.name %></option>
+
+      <% }) %>
+    </select>
+  </div>
+
+  <div>
+    <label>name</label>
+    <input type="text" name="name" class="form-control" />
+  </div>
+
+  <div>
+    <label>price</label>
+    <input type="number" name="price" class="form-control" />
+  </div>
+
+  <div>
+    <label>quantity</label>
+    <input type="text" name="quantity" class="form-control" />
+  </div>
+
+  <button type="submit" class="btn btn-outline-secondary">Add items</button>
+</form>
