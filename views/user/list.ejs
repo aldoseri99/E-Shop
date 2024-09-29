@@ -1,12 +1,14 @@
 <table
   style="border: 1px solid black; border-collapse: collapse; font-size: 30px"
 >
-  <% users.forEach((user, id)=>{%>
+  <% users.forEach((account )=>{%>
   <tr style="border: 1px solid black">
-    <td style="border: 1px solid black"><%=user.firstName%></td>
-    <td style="border: 1px solid black"><%=user.type%></td>
+    <td style="border: 1px solid black"><%=account.firstName%></td>
+    <td style="border: 1px solid black"><%=account.lastName%></td>
+    <td style="border: 1px solid black"><%=account.type%></td>
     <td>
-      <a href="useredit?id=<%=user._id%>"><%=user._id%></a>
+      <a href="useredit?id=<%=account._id%>">edit</a>
+      <a href="index">back</a>
     </td>
   </tr>
   <%})%>
