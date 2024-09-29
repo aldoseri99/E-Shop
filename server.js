@@ -1,8 +1,11 @@
 const express = require("express")
 const mongoose = require("mongoose")
 
-const session = require("express-session")
-const passport = require("passport")
+const expressLayouts = require('express-ejs-layouts')
+
+const session = require('express-session')
+const passport = require('passport')
+
 
 // dotenv configuration
 require("dotenv").config()
@@ -15,7 +18,10 @@ const app = express()
 
 const db = require("./config/db")
 
-app.use(express.static("public"))
+app.use(expressLayouts)
+
+app.use(express.static('public'))
+
 
 //shorten access to views folder
 app.set("view engine", "ejs")
