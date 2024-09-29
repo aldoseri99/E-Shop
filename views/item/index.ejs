@@ -8,6 +8,8 @@
 
 <a href="/item/delete?id=<%= item._id %>">Delete</a>
 
-<a href="/item/addToCart?id=<%= item._id %>">Add to cart</a>
-
+<form action="/cart/addToCart" method="POST" style="display: inline">
+  <input type="text" name="id" value="<%= item._id %>" />
+  <button type="submit">Add to cart</button>
+</form>
 <% }) %>

@@ -44,12 +44,14 @@ const categoryRouter = require("./routes/category")
 const userRouter = require("./routes/user")
 const authRouter = require("./routes/auth")
 const itemRouter = require("./routes/item")
+const cartRouter = require("./routes/cart")
 
 //mount routes
 app.use("/category", categoryRouter)
 app.use("/user", userRouter)
 app.use("/", authRouter)
 app.use("/item", itemRouter)
+app.use("/cart", cartRouter)
 
 app.listen(PORT, () => {
   console.log(`app listening on port ${PORT}`)
