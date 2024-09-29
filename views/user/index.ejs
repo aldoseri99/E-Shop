@@ -1,9 +1,22 @@
+<style>
+  .pfp {
+    border: 3px solid black;
+    margin-left: 20px;
+    height: 100px;
+  }
+</style>
+
 <h1></h1>
 
 <div>
   <h3>Name: <%= user.firstName%> <%= user.lastName%></h3>
   <h3>Phone: <%=user.phone%></h3>
   <h3>Email: <%=user.email%></h3>
+  <% if(user.avatar.includes("https://lh3.googleusercontent.com")){%>
+  <img src="<%=user.avatar%>" alt="" class="pfp" />
+  <%} else{%>
+  <img src="/profileImages/<%=user.avatar%>" alt="" class="pfp" />
+  <%}%>
 </div>
 
 <a href="/user/edit">edit</a>
