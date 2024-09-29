@@ -1,19 +1,23 @@
 <h5>Edit Your Information</h5>
 
-<form method="POST" action="/user/edit">
+<form method="POST" action="/user/edit" enctype="multipart/form-data">
   <div>
-    <label for=""></label>
+    <label for="">First Name</label>
     <input name="firstName" type="text" value="<%= user.firstName%>" />
   </div>
   <div>
-    <label for=""></label>
+    <label for="">Last Name</label>
     <input name="lastName" type="text" value="<%= user.lastName%>" />
   </div>
   <div>
-    <label for=""></label>
+    <label for="">Phone</label>
     <input name="phone" type="text" value="<%= user.phone%>" />
   </div>
-  <input name="id" type="" value="<%= user._id%>" />
+  <div>
+    <label for="">Image</label>
+    <input name="avatar" type="file" accept="image/*" />
+  </div>
+  <input name="id" type="hidden" value="<%= user._id%>" />
   <div>
     <input type="submit" value="submit" />
   </div>

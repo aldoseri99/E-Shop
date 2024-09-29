@@ -15,6 +15,8 @@ const app = express()
 
 const db = require('./config/db')
 
+app.use(express.static('public'))
+
 //shorten access to views folder
 app.set('view engine', 'ejs')
 
