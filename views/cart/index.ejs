@@ -1,14 +1,28 @@
 <h1>Your Cart</h1>
-
 <% if (items.length > 0) { %>
 <ul>
-  <% items.forEach(function(item) { %>
+  <% items.forEach(function(cartItem) { %>
   <li>
-    <p><strong>Name:</strong> <%= item.name %></p>
-    <p><strong>Price:</strong> $<%= item.Price %></p>
+    <p><%= cartItem.item.name %> - Price: <%= cartItem.item.Price %></p>
+
+    <div>
+      <p>Quantity: <%= cartItem.qty %></p>
+    </div>
+
+    <form action="/cart/increase" method="POST" style="display: inline">
+      <input type="text" name="id" value="<%= cartItem.item._id %>" />
+      <button type="submit">plus</button>
+    </form>
+
+    <form action="/cart/decrease" method="POST" style="display: inline">
+      <input type="text" name="id" value="<%= cartItem.item._id %>" />
+      <button type="submit">minus</button>
+    </form>
+
+    <a href="/cart/delete?id=<%= cartItem.item._id %>">Remove</a>
   </li>
-  <% }) %>
+  <% }); %>
 </ul>
 <% } else { %>
-<p>Your cart is empty</p>
+<p><%= message %></p>
 <% } %>
