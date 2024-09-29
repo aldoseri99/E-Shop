@@ -1,0 +1,12 @@
+<h1>Shopping Cart</h1>
+
+<% cartItems.forEach(function(item){ %>
+    <div>
+        <p><%= item.name %> - Quantity: <%= item.qty %> - Total: <%= item.qty * item.price %> BHD</p>
+        <a href="/cart/remove?itemId=<%= item._id %>">Remove</a>
+    </div>
+<% }) %>
+
+<form action="/cart/buy" method="POST">
+    <button type="submit" class="btn btn-primary">Buy</button>
+</form>
