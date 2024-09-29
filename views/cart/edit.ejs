@@ -1,0 +1,23 @@
+<h5>Edit Cart</h5>
+
+<form action="/cart/update" method="POST">
+  <div>
+    <label class="form-label">name</label>
+    <input
+      type="text"
+      name="name"
+      class="form-control mb-3"
+      value="<%= cart.name %>"
+    />
+  </div>
+
+  
+  <div class="d-grid"></div>
+    <button type="submit" class="btn btn-success btn-sm">
+      update cart
+    </button>
+  </div>
+
+  <input type="hidden" name="id" value="<%= cart._id %>">
+</form>
+//edit
