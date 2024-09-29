@@ -3,7 +3,7 @@
 <form action="/item/add" method="POST">
   <div>
     <label>category</label>
-    <select name="author" class="form-control">
+    <select name="category" class="form-control">
       <% categories.forEach(function(category){ %>
 
       <option value="<%= category._id %>"><%=category.name %></option>
@@ -19,12 +19,12 @@
 
   <div>
     <label>price</label>
-    <input type="number" name="price" class="form-control" />
+    <input type="number" name="Price" class="form-control" />
   </div>
 
   <div>
     <label>quantity</label>
-    <input type="text" name="quantity" class="form-control" />
+    <input type="text" name="qty" class="form-control" />
   </div>
 
   <button type="submit" class="btn btn-outline-secondary">Add items</button>
