@@ -16,6 +16,8 @@
   <img src="<%=user.avatar%>" alt="" class="pfp" />
   <%} else{%>
   <img src="/profileImages/<%=user.avatar%>" alt="" class="pfp" />
+  <%}%> <% if(user.type === "admin"){%>
+  <a href="/user/list">Users List</a>
   <%}%>
 </div>
 

@@ -1,0 +1,48 @@
+<h1>edit item</h1>
+
+<form action="/item/update" method="POST">
+  <div>
+    <label>category</label>
+    <select name="category" class="form-control">
+      <% categories.forEach(function(category) { %>
+        <option value="<%= category._id %>" <%= category._id.equals(item.category) ? 'selected' : '' %>>
+          <%= category.name %>
+        </option>
+      <% }) %>
+    </select>
+  </div>
+
+  <div>
+    <label>name</label>
+    <input
+      type="text"
+      name="name"
+      class="form-control"
+      value="<%= item.name %>"
+    />
+  </div>
+
+  <div>
+    <label>price</label>
+    <input
+      type="text"
+      name="Price"
+      class="form-control"
+      value="<%= item.Price %>"
+    />
+  </div>
+
+  <div>
+    <label>quantity</label>
+    <input
+      type="text"
+      name="qty"
+      class="form-control"
+      value="<%= item.qty %>"
+    />
+  </div>
+
+  <input type="text" name="id" value="<%= item._id %>" />
+
+  <button type="submit" class="btn btn-outline-secondary">update items</button>
+</form>

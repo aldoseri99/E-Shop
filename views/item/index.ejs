@@ -1,0 +1,11 @@
+<h1>list items</h1>
+<% items.forEach(function(item){ %>
+
+<p><%= item.name %></p>
+<p><%= item.Price %></p>
+
+<a href="/item/edit?id=<%= item._id %>">Edit</a>
+
+<a href="/item/delete?id=<%= item._id %>">Delete</a>
+
+<% }) %>

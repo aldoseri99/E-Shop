@@ -6,7 +6,7 @@ const storage = multer.diskStorage({
     cb(null, './public/profileImages')
   },
   filename: function (req, file, cb) {
-    cb(null, file.originalname)
+    cb(null, Date.now() + '-' + file.originalname)
   }
 })
 upload = multer({ storage })
@@ -31,6 +31,39 @@ exports.user_edit_post = (req, res) => {
     .then(() => {
       console.log(req.file)
       res.redirect('/user/index')
+    })
+    .catch((err) => {
+      console.log(err)
+    })
+}
+
+exports.user_list_get = (req, res) => {
+  User.find()
+    .then((users) => {
+      res.render('user/list', { users })
+    })
+    .catch((err) => {
+      console.log(err)
+    })
+}
+
+exports.user_adminedit_get = (req, res) => {
+  User.findById(req.query.id)
+    .then((account) => {
+      res.render('user/useredit', { account })
+    })
+    .catch((err) => {
+      console.log(err)
+    })
+}
+exports.user_adminedit_post = (req, res) => {
+  User.findByIdAndUpdate(req.body.id, {
+    $set: {
+      type: req.body.type
+    }
+  })
+    .then(() => {
+      res.redirect('/user/list')
     })
     .catch((err) => {
       console.log(err)
