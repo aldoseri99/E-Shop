@@ -52,6 +52,7 @@ const userRouter = require("./routers/user")
 const authRouter = require("./routers/auth")
 const itemRouter = require("./routers/item")
 const cartRouter = require("./routers/cart")
+//const searchRouter = require("./routers/search")
 
 //mount routes
 app.use('/', indexRouter)
@@ -60,6 +61,7 @@ app.use("/user", userRouter)
 app.use("/", authRouter)
 app.use("/item", itemRouter)
 app.use("/cart", cartRouter)
+//app.use('/search', searchRouter)
 
 app.listen(PORT, () => {
   console.log(`app listening on port ${PORT}`)
