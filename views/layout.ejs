@@ -19,7 +19,7 @@
     </a>
 
     <nav>
-      <% if(user.type === 'seller') { %>
+      <% if(user){ if(user.type === 'seller') { %>
       <a href="/item/index" class="btn btn-outline-primary">Items</a>
       <a href="/category/index" class="btn btn-outline-primary">Category</a>
       <a href="/cart/index" class="btn btn-outline-primary">Cart</a>
@@ -38,7 +38,7 @@
       <a href="/cart/index" class="btn btn-outline-primary">Cart</a>
       <a href="/user/index" class="btn btn-outline-primary">My Profile</a>
       <a href="/logout" class="btn btn-outline-primary">Logout</a>
-      <% } else{%>
+      <% }} else{%>
       <a href="/item/index" class="btn btn-outline-primary">Items</a>
       <a href="/category/index" class="btn btn-outline-primary">Category</a>
       <a href="/user/index" class="btn btn-outline-primary">My Profile</a>
