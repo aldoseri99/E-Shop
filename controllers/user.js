@@ -1,12 +1,14 @@
 const User = require('../models/User')
 
 const multer = require('multer')
+let fileName
 const storage = multer.diskStorage({
   destination: function (req, file, cb) {
     cb(null, './public/profileImages')
   },
   filename: function (req, file, cb) {
-    cb(null, Date.now() + '-' + file.originalname)
+    fileName = Date.now() + '-' + file.originalname
+    cb(null, fileName)
   }
 })
 upload = multer({ storage })
@@ -25,7 +27,7 @@ exports.user_edit_post = (req, res) => {
       firstName: req.body.firstName,
       lastName: req.body.lastName,
       phone: req.body.phone,
-      avatar: req.file.filename
+      avatar: fileName
     }
   })
     .then(() => {
