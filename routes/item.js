@@ -5,7 +5,7 @@ const router = express.Router()
 
 router.use(
   express.urlencoded({
-    extended: true.
+    extended: true,
   })
 )
 
