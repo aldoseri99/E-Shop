@@ -2,6 +2,12 @@
 <% items.forEach(function(item){ %>
 
 <p>
+  <img
+    src="/itemImages/<%= item.image %>"
+    alt="<%= item.name %>"
+    style="width: 100px"
+  />
+
   <a href="/item/details?id=<%= item._id %>"> <%= item.name %> </a>
 </p>
 <p><%= item.Price %></p>

@@ -12,7 +12,7 @@ router.use(
 const itemCntrl = require("../controllers/item")
 
 router.get("/add", itemCntrl.item_add_get)
-router.post("/add", itemCntrl.item_add_post)
+router.post("/add", upload.single("image"), itemCntrl.item_add_post)
 router.get("/index", itemCntrl.item_index_get)
 router.get("/delete", itemCntrl.item_delete_get)
 router.get("/edit", itemCntrl.item_edit_get)

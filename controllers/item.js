@@ -1,19 +1,39 @@
 const Category = require("../models/Category")
 const Item = require("../models/Item")
 
-exports.item_add_get = (req, res) => {
-  Category.find()
-    .then((categories) => {
-      res.render("item/add", { categories })
-    })
-    .catch((err) => {
-      console.log(err)
-    })
-}
+const multer = require("multer")
+
+let fileName
+const storage = multer.diskStorage({
+  destination: function (req, file, cb) {
+    cb(null, "./public/itemImages")
+  },
+  filename: function (req, file, cb) {
+    fileName = Date.now() + "-" + file.originalname
+    cb(null, fileName)
+  },
+})
+upload = multer({ storage })
 
 exports.item_add_post = (req, res) => {
-  console.log(req.body)
-  let item = new Item(req.body)
+  console.log("req body =", JSON.stringify(req.body, null, 2))
+  console.log("req file =", JSON.stringify(req.file, null, 2))
+
+  if (!req.file) {
+    return res.status(400).send("No files uploaded.")
+  }
+
+  const fileName = req.file.filename
+
+  const itemData = {
+    name: req.body.name,
+    price: req.body.Price,
+    qty: req.body.qty,
+    category: req.body.category,
+    image: fileName,
+  }
+
+  let item = new Item(itemData)
 
   item
     .save()
@@ -30,6 +50,16 @@ exports.item_add_post = (req, res) => {
       res.redirect("/item/index")
     })
 
+    .catch((err) => {
+      console.log(err)
+    })
+}
+
+exports.item_add_get = (req, res) => {
+  Category.find()
+    .then((categories) => {
+      res.render("item/add", { categories })
+    })
     .catch((err) => {
       console.log(err)
     })
