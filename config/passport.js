@@ -30,7 +30,8 @@ passport.use(
           googleId: profile.id,
           email: profile.emails[0].value,
           avatar: profile.photos[0].value,
-          allData: profile
+          allData: profile,
+          type: 'customer'
         })
         return cb(null, user)
       } catch (err) {
