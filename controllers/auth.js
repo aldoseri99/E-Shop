@@ -11,6 +11,6 @@ exports.auth_callback_google = passport.authenticate('google', {
 
 exports.auth_logout_google = (req, res) => {
   req.logout(function () {
-    res.redirect('/')
+    res.redirect('/home/index')
   })
 }
