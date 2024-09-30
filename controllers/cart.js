@@ -1,5 +1,5 @@
-const Cart = require("../models/Cart")
-const Item = require("../models/Item")
+const Cart = require('../models/Cart')
+const Item = require('../models/Item')
 
 exports.cart_addToCart_post = async (req, res) => {
   const itemId = req.body.id
@@ -7,7 +7,8 @@ exports.cart_addToCart_post = async (req, res) => {
 
   try {
     //get user cart
-    let cart = await Cart.findById(userId)
+    let cart = await Cart.findOne({ userId: userId })
+    console.log(cart)
 
     //if it does not exist create one with empty items array
     if (!cart) {
@@ -30,7 +31,7 @@ exports.cart_addToCart_post = async (req, res) => {
     //save changes
     await cart.save()
 
-    res.redirect("/cart/index")
+    res.redirect('/cart/index')
   } catch (err) {
     console.log(err)
   }
@@ -39,22 +40,25 @@ exports.cart_addToCart_post = async (req, res) => {
 exports.cart_index_get = (req, res) => {
   const userId = req.user._id
 
-  Cart.findById(userId)
-    .populate("items.item")
+  Cart.findOne({ userId: userId })
+    .populate('items.item')
     .then((cart) => {
       if (cart.items.length === 0) {
-        return res.render("cart/index", {
+        return res.render('cart/index', {
           items: [],
-          message: "Your cart is empty",
+          message: 'Your cart is empty'
         })
       }
 
       const items = cart.items
-
-      res.render("cart/index", { items })
+      res.render('cart/index', { items })
     })
     .catch((err) => {
       console.log(err)
+      return res.render('cart/index', {
+        items: [],
+        message: 'Your cart is empty'
+      })
     })
 }
 
@@ -68,7 +72,7 @@ exports.cart_delete_get = (req, res) => {
     { new: true }
   )
     .then(() => {
-      res.redirect("/cart/index")
+      res.redirect('/cart/index')
     })
     .catch((err) => {
       console.log(err)
@@ -84,7 +88,7 @@ exports.cart_increase_post = async (req, res) => {
   const userId = req.user._id
 
   try {
-    let cart = await Cart.findById(userId)
+    let cart = await Cart.findOne({ userId: userId })
 
     const existingItem = cart.items.find((cartItem) =>
       cartItem.item.equals(itemId)
@@ -94,10 +98,10 @@ exports.cart_increase_post = async (req, res) => {
 
     await cart.save()
 
-    res.redirect("/cart/index")
+    res.redirect('/cart/index')
   } catch (err) {
     console.log(err)
-    res.status(500).send("Error updating cart")
+    res.status(500).send('Error updating cart')
   }
 }
 
@@ -106,7 +110,7 @@ exports.cart_decrease_post = async (req, res) => {
   const userId = req.user._id
 
   try {
-    let cart = await Cart.findById(userId)
+    let cart = await Cart.findOne({ userId: userId })
 
     const existingItem = cart.items.find((cartItem) =>
       cartItem.item.equals(itemId)
@@ -118,9 +122,9 @@ exports.cart_decrease_post = async (req, res) => {
 
     await cart.save()
 
-    res.redirect("/cart/index")
+    res.redirect('/cart/index')
   } catch (err) {
     console.log(err)
-    res.status(500).send("Error updating cart")
+    res.status(500).send('Error updating cart')
   }
 }
