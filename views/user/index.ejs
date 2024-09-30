@@ -3,6 +3,7 @@
     border: 3px solid black;
     margin-left: 20px;
     height: 100px;
+    width: 100px;
   }
 </style>
 
@@ -13,6 +14,7 @@
   <h3>Phone: <%=user.phone%></h3>
   <h3>Email: <%=user.email%></h3>
   <% if(user.avatar===user.allData.photos[0].value){%>
+  <img src="<%=user.allData.photos[0].value%>" alt="" class="pfp" />
   <img src="<%=user.avatar%>" alt="" class="pfp" />
   <%} else{%>
   <img src="/profileImages/<%=user.avatar%>" alt="" class="pfp" />

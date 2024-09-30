@@ -19,11 +19,14 @@
     </a>
 
     <nav>
-      <% if(user){ if(user.type === 'seller') { %>
+      <% if(user){ %>
+      <p><%= user.firstName%> <%= user.lastName%>: <%= user.type%></p>
+      <%if(user.type === 'seller') { %>
       <a href="/item/index" class="btn btn-outline-primary">Items</a>
       <a href="/category/index" class="btn btn-outline-primary">Category</a>
       <a href="/cart/index" class="btn btn-outline-primary">Cart</a>
       <a href="/item/add" class="btn btn-outline-primary">Add Items</a>
+      <a href="/item/myItems" class="btn btn-outline-primary">My Items</a>
       <a href="/user/index" class="btn btn-outline-primary">My Profile</a>
       <a href="/logout" class="btn btn-outline-primary">Logout</a>
       <% } else if(user.type === 'admin') { %>
@@ -32,7 +35,7 @@
       <a href="/user/list" class="btn btn-outline-primary">Users List</a>
       <a href="/user/index" class="btn btn-outline-primary">My Profile</a>
       <a href="/logout" class="btn btn-outline-primary">Logout</a>
-      <% } else if(user.type === 'costumer') { %>
+      <% } else if(user.type === 'customer') { %>
       <a href="/item/index" class="btn btn-outline-primary">Items</a>
       <a href="/category/index" class="btn btn-outline-primary">Category</a>
       <a href="/cart/index" class="btn btn-outline-primary">Cart</a>

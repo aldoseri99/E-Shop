@@ -21,7 +21,10 @@
 
     <a href="/cart/delete?id=<%= cartItem.item._id %>">Remove</a>
   </li>
-  <% }); %>
+  <% }); %> <% const newItem = items.map(cartItem => cartItem.item.Price *
+  cartItem.qty); const totalItem = newItem.reduce((accumulator, value) =>
+  accumulator + value, 0); %>
+  <h3>Total: <%= totalItem %></h3>
 </ul>
 <% } else { %>
 <p><%= message %></p>
