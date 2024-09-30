@@ -59,3 +59,14 @@ exports.category_update_post = (req, res) => {
       console.log(err)
     })
 }
+
+exports.category_details_get = (req, res) => {
+  Category.findById(req.query.id)
+    .populate("item")
+    .then((category) => {
+      res.render("category/details", { category })
+    })
+    .catch((err) => {
+      console.log(err)
+    })
+}
