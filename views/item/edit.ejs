@@ -42,7 +42,16 @@
     />
   </div>
 
-  <input type="text" name="id" value="<%= item._id %>" />
+  <div>
+    <h4>Existing Images:</h4>
+    <% item.image.forEach(img => { %>
+      <img src="/itemImages/<%= img %>" alt="Item Image" style="width: 100px; height: auto;">
+    <% }) %>
+  </div>
+  
+  <input type="file" name="files" multiple>
+
+  <input type="hidden" name="id" value="<%= item._id %>" />
 
   <button type="submit" class="btn btn-outline-secondary">update items</button>
 </form>
