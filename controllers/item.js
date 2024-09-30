@@ -16,21 +16,21 @@ const storage = multer.diskStorage({
 upload = multer({ storage })
 
 exports.item_add_post = (req, res) => {
-  console.log("req body =", JSON.stringify(req.body, null, 2))
-  console.log("req file =", JSON.stringify(req.file, null, 2))
+  console.log("req body =", req.body)
+  console.log("req files =", req.files)
 
-  if (!req.file) {
+  if (!req.files) {
     return res.status(400).send("No files uploaded.")
   }
 
-  const fileName = req.file.filename
+  const fileNames = req.files.map((file) => file.filename)
 
   const itemData = {
     name: req.body.name,
     price: req.body.Price,
     qty: req.body.qty,
     category: req.body.category,
-    image: fileName,
+    image: fileNames,
   }
 
   let item = new Item(itemData)
