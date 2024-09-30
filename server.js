@@ -46,6 +46,7 @@ app.use((req, res, next) => {
 })
 
 //import routes
+const indexRouter = require("./routes/index")
 const categoryRouter = require("./routes/category")
 const userRouter = require("./routes/user")
 const authRouter = require("./routes/auth")
@@ -53,6 +54,7 @@ const itemRouter = require("./routes/item")
 const cartRouter = require("./routes/cart")
 
 //mount routes
+app.use('/', indexRouter)
 app.use("/category", categoryRouter)
 app.use("/user", userRouter)
 app.use("/", authRouter)
