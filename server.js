@@ -46,13 +46,15 @@ app.use((req, res, next) => {
 })
 
 //import routes
-const categoryRouter = require("./routes/category")
-const userRouter = require("./routes/user")
-const authRouter = require("./routes/auth")
-const itemRouter = require("./routes/item")
-const cartRouter = require("./routes/cart")
+const indexRouter = require("./routers/index")
+const categoryRouter = require("./routers/category")
+const userRouter = require("./routers/user")
+const authRouter = require("./routers/auth")
+const itemRouter = require("./routers/item")
+const cartRouter = require("./routers/cart")
 
 //mount routes
+app.use('/', indexRouter)
 app.use("/category", categoryRouter)
 app.use("/user", userRouter)
 app.use("/", authRouter)
