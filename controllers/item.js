@@ -80,3 +80,13 @@ exports.item_update_post = (req, res) => {
       console.log(err)
     })
 }
+
+exports.item_details_get = (req, res) => {
+  Item.findById(req.query.id)
+    .then((item) => {
+      res.render("item/details", { item })
+    })
+    .catch((err) => {
+      console.log(err)
+    })
+}

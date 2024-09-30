@@ -1,7 +1,9 @@
 <h1>list items</h1>
 <% items.forEach(function(item){ %>
 
-<p><%= item.name %></p>
+<p>
+  <a href="/item/details?id=<%= item._id %>"> <%= item.name %> </a>
+</p>
 <p><%= item.Price %></p>
 
 <a href="/item/edit?id=<%= item._id %>">Edit</a>
