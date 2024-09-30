@@ -3,7 +3,9 @@
 <% categories.forEach(function(category){ %>
 
 <div>
-  <h3><%= category.name %></h3>
+  <h3>
+    <a href="/category/details?id=<%= category._id %>"><%= category.name %></a>
+  </h3>
   <a href="/category/edit?id=<%= category._id %>">edit</a>
   <a href="/category/delete?id=<%= category._id %>">delete</a>
 </div>
