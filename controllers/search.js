@@ -21,3 +21,4 @@ exports.search_index_get = async (req, res) => {
         res.status(500).send('Error while searching')
     }
 }
+// https://www.mongodb.com/docs/manual/reference/operator/query/regex/
