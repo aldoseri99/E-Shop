@@ -30,6 +30,7 @@ exports.item_add_post = (req, res) => {
     Price: req.body.Price,
     qty: req.body.qty,
     category: req.body.category,
+    description: req.body.description,
     image: fileNames,
   }
 
