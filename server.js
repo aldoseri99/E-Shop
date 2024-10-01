@@ -1,13 +1,13 @@
-const express = require('express')
-const mongoose = require('mongoose')
+const express = require("express")
+const mongoose = require("mongoose")
 
-const expressLayouts = require('express-ejs-layouts')
+const expressLayouts = require("express-ejs-layouts")
 
-const session = require('express-session')
-const passport = require('passport')
+const session = require("express-session")
+const passport = require("passport")
 
 // dotenv configuration
-require('dotenv').config()
+require("dotenv").config()
 
 //PORT Configurations
 const PORT = 4000
@@ -15,22 +15,22 @@ const PORT = 4000
 //initialize express
 const app = express()
 
-const db = require('./config/db')
+const db = require("./config/db")
 
 app.use(expressLayouts)
 
-app.use(express.static('public'))
+app.use(express.static("public"))
 
 //shorten access to views folder
-app.set('view engine', 'ejs')
+app.set("view engine", "ejs")
 
 // Passport and session configuration
-require('./config/passport')
+require("./config/passport")
 app.use(
   session({
     secret: process.env.SECRET,
     reverse: false,
-    saveUninitialized: true
+    saveUninitialized: true,
   })
 )
 
@@ -45,25 +45,24 @@ app.use((req, res, next) => {
 
 //import routes
 
-const indexRouter = require('./routers/index')
-const categoryRouter = require('./routers/category')
-const userRouter = require('./routers/user')
-const authRouter = require('./routers/auth')
-const itemRouter = require('./routers/item')
-const cartRouter = require('./routers/cart')
-const checkoutRouter = require('./routers/checkout')
+const indexRouter = require("./routers/index")
+const categoryRouter = require("./routers/category")
+const userRouter = require("./routers/user")
+const authRouter = require("./routers/auth")
+const itemRouter = require("./routers/item")
+const cartRouter = require("./routers/cart")
+const checkoutRouter = require("./routers/checkout")
 const searchRouter = require("./routers/search")
 
 //mount routes
-app.use('/', indexRouter)
-app.use('/category', categoryRouter)
-app.use('/user', userRouter)
-app.use('/', authRouter)
-app.use('/item', itemRouter)
-app.use('/cart', cartRouter)
-app.use('/checkout', checkoutRouter)
-app.use('/search', searchRouter)
-
+app.use("/", indexRouter)
+app.use("/category", categoryRouter)
+app.use("/user", userRouter)
+app.use("/", authRouter)
+app.use("/item", itemRouter)
+app.use("/cart", cartRouter)
+app.use("/checkout", checkoutRouter)
+app.use("/search", searchRouter)
 
 app.listen(PORT, () => {
   console.log(`app listening on port ${PORT}`)

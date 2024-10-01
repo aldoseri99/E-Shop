@@ -1,6 +1,6 @@
 <h1>edit item</h1>
 
-<form action="/item/update" method="POST">
+<form action="/item/update" method="POST" enctype="multipart/form-data">
   <div>
     <label>category</label>
     <select name="category" class="form-control">
@@ -42,7 +42,24 @@
     />
   </div>
 
-  <input type="text" name="id" value="<%= item._id %>" />
+  <div>
+    <label>images</label>
+    <br>
+    <% item.image.forEach((img) => { %>
+
+      <img src="/itemImages/<%= img %>" alt="Item Image" style="width: 100px; height: auto;">
+
+
+
+    <% }) %>
+  </div>
+
+  <div>
+    <label>replace Images</label>
+    <input type="file" name="images" multiple>
+  </div>
+
+  <input type="hidden" name="id" value="<%= item._id %>" />
 
   <button type="submit" class="btn btn-outline-secondary">update items</button>
 </form>
