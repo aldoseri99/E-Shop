@@ -2,7 +2,7 @@
 
 <form action="/item/add" method="POST" enctype="multipart/form-data">
   <div>
-    <label>category</label>
+    <label class="form-label">category</label>
     <select name="category" class="form-control">
       <% categories.forEach(function(category){ %>
 
@@ -13,24 +13,35 @@
   </div>
 
   <div>
-    <label>name</label>
+    <label class="form-label">name</label>
     <input type="text" name="name" class="form-control" />
   </div>
 
   <div>
-    <label>price</label>
+    <label class="form-label">price</label>
     <input type="number" name="Price" class="form-control" />
   </div>
 
   <div>
-    <label>quantity</label>
+    <label class="form-label">quantity</label>
     <input type="text" name="qty" class="form-control" />
   </div>
 
   <div>
-    <label for="">Image</label>
-    <input name="images" type="file" accept="image/*" multiple />
+    <label class="form-label">description</label>
+    <input type="text" name="description" class="form-control" />
   </div>
 
-  <button type="submit" class="btn btn-outline-secondary">Add items</button>
+  <div>
+    <label class="form-label">Image</label>
+    <input
+      class="form-control"
+      name="images"
+      type="file"
+      accept="image/*"
+      multiple
+    />
+  </div>
+
+  <button type="submit" class="btn btn-primary">Add items</button>
 </form>
