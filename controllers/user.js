@@ -38,17 +38,33 @@ exports.user_edit_post = (req, res) => {
       console.log(err)
     })
 }
+exports.user_list_get = async (req, res) => {
+  try {
+    const query = req.query.query
+    if (!query) {
+      const users = await User.find()
+      return res.render('user/list', { users: users, message: '' })
+    }
 
-exports.user_list_get = (req, res) => {
-  User.find()
-    .then((users) => {
-      res.render('user/list', { users })
+    const users = await User.find({
+      $or: [
+        { firstName: { $regex: query, $options: 'i' } },
+        { lastName: { $regex: query, $options: 'i' } },
+        { email: { $regex: query, $options: 'i' } },
+        { type: { $regex: query, $options: 'i' } }
+      ]
     })
-    .catch((err) => {
-      console.log(err)
-    })
+
+    if (users.length > 0) {
+      res.render('user/list', { users: users, message: '' })
+    } else {
+      res.render('user/list', { users: [], message: 'No users found' })
+    }
+  } catch (err) {
+    console.log(err)
+    res.status(500).send('Error while searching')
+  }
 }
-
 exports.user_adminedit_get = (req, res) => {
   User.findById(req.query.id)
     .then((account) => {

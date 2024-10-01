@@ -1,0 +1,29 @@
+<style>
+  td {
+    border: 1px solid black;
+    border-collapse: collapse;
+    padding: 0px 10px;
+  }
+  img {
+    height: 20px;
+    width: 20px;
+  }
+</style>
+
+<h1>My Items</h1>
+<% items.forEach((item)=>{ %>
+<table>
+  <tr>
+    <td><img src="" alt="" /></td>
+    <td><%= item.name %></td>
+    <td><%= item.qty %></td>
+    <td><%= item.Price %></td>
+    <td>
+      <a href="/item/edit?id=<%= item._id %>">Edit</a>
+    </td>
+    <td>
+      <a href="/item/delete?id=<%= item._id %>">Delete</a>
+    </td>
+  </tr>
+</table>
+<%})%>
