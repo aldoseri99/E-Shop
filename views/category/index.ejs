@@ -1,13 +1,18 @@
-<h1>categories</h1>
+<h3 class="category-header">categories</h3>
 
-<% categories.forEach(function(category){ %>
+<div class="category-container">
+  <% categories.forEach(function(category){ %>
 
-<div>
-  <h3>
-    <a href="/category/details?id=<%= category._id %>"><%= category.name %></a>
-  </h3>
-  <a href="/category/edit?id=<%= category._id %>">edit</a>
-  <a href="/category/delete?id=<%= category._id %>">delete</a>
+  <a href="/category/details?id=<%= category._id %>">
+    <div class="category-card">
+      <h2 category-name><%= category.name %></h2>
+
+      <% if(user){ if(user.type === 'seller' || user.type === 'admin') { %>
+      <a href="/category/edit?id=<%= category._id %>">edit</a>
+      <a href="/category/delete?id=<%= category._id %>">delete</a>
+      <% } } %>
+    </div>
+  </a>
+
+  <% }) %>
 </div>
-
-<% }) %>
