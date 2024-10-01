@@ -1,0 +1,23 @@
+<h1>Your Order</h1>
+<% if (orders.length > 0) { %>
+  <ul>
+    <% orders.forEach(order => { %>
+      <li>
+        <h3>Order ID: <%= order._id %></h3>
+        <p>User: <%= req.user.name %></p>
+        <p>Total Amount: $<%= order.totalAmount %></p>
+        <p>Status: <%= order.orderStatus %></p>
+        <p>Payment Status: <%= order.paymentStatus %></p>
+        <ul>
+          <% order.cart.items.forEach(item => { %>
+            <li>
+              <%= item.name %> - Quantity: <%= item.quantity %>
+            </li>
+          <% }) %>
+        </ul>
+      </li>
+    <% }) %>
+  </ul>
+<% } else { %>
+  <p>No orders found</p>
+<% } %>

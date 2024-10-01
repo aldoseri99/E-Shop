@@ -57,16 +57,19 @@ const itemRouter = require("./routers/item")
 const cartRouter = require("./routers/cart")
 const checkoutRouter = require("./routers/checkout")
 const searchRouter = require("./routers/search")
-
+const orderRouter = require("./routers/order")
 //mount routes
-app.use("/", indexRouter)
-app.use("/category", categoryRouter)
-app.use("/user", userRouter)
-app.use("/", authRouter)
-app.use("/item", itemRouter)
-app.use("/cart", cartRouter)
-app.use("/checkout", checkoutRouter)
-app.use("/search", searchRouter)
+
+app.use('/', indexRouter)
+app.use('/category', categoryRouter)
+app.use('/user', userRouter)
+app.use('/', authRouter)
+app.use('/item', itemRouter)
+app.use('/cart', cartRouter)
+app.use('/checkout', checkoutRouter)
+app.use('/search', searchRouter)
+app.use('/order', orderRouter)
+
 
 
 app.listen(PORT, () => {
