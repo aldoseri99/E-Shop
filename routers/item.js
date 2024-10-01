@@ -18,6 +18,6 @@ router.get("/delete", itemCntrl.item_delete_get)
 router.get("/edit", itemCntrl.item_edit_get)
 router.post("/update", upload.array("images", 5), itemCntrl.item_update_post)
 router.get("/details", itemCntrl.item_details_get)
-router.post("/deleteImage", itemCntrl.itemImages_delete_post)
+/*router.post("/deleteImage", itemCntrl.itemImages_delete_post)*/
 
 module.exports = router

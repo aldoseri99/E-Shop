@@ -1,6 +1,6 @@
 <h1>edit item</h1>
 
-<form action="/item/update" method="POST">
+<form action="/item/update" method="POST" enctype="multipart/form-data">
   <div>
     <label>category</label>
     <select name="category" class="form-control">
@@ -45,25 +45,18 @@
   <div>
     <label>images</label>
     <br>
-    <% item.image.forEach((img,index) => { %>
-      
+    <% item.image.forEach((img) => { %>
+
       <img src="/itemImages/<%= img %>" alt="Item Image" style="width: 100px; height: auto;">
 
-      <br>
-      
-      <form action="/item/deleteImage" method="POST" style="display:inline;">
-        <input type="hidden" name="itemId" value="<%= item._id %>">
-        <input type="hidden" name="index" value="<%= index %>">
-        <button type="submit">Delete</button>
-      </form>
 
 
     <% }) %>
   </div>
 
   <div>
-    <label>Upload New Images</label>
-    <input type="file" name="image" multiple>
+    <label>replace Images</label>
+    <input type="file" name="images" multiple>
   </div>
 
   <input type="hidden" name="id" value="<%= item._id %>" />

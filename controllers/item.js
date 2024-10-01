@@ -101,14 +101,31 @@ exports.item_edit_get = (req, res) => {
     })
 }
 
-exports.item_update_post = (req, res) => {
-  Item.findByIdAndUpdate(req.body.id, req.body)
-    .then(() => {
-      res.redirect("/item/index")
-    })
-    .catch((err) => {
-      console.log(err)
-    })
+exports.item_update_post = async (req, res) => {
+  try {
+    const { id, category, name, price, qty } = req.body
+    const uploadedImages = req.files
+
+    const item = await Item.findById(id)
+
+    item.category = category
+    item.name = name
+    item.price = price
+    item.qty = qty
+
+    if (uploadedImages) {
+      const imagePaths = uploadedImages.map((file) => file.filename) // Assuming multer is configured to store filenames
+      item.image = imagePaths
+    } else {
+      console.error("No images uploaded or an error occurred.")
+    }
+
+    await item.save()
+
+    res.redirect("/item/index")
+  } catch (err) {
+    console.log(err)
+  }
 }
 
 exports.item_details_get = (req, res) => {
@@ -119,28 +136,4 @@ exports.item_details_get = (req, res) => {
     .catch((err) => {
       console.log(err)
     })
-}
-
-exports.itemImages_delete_post = async (req, res) => {
-  const { itemId, index } = req.body
-
-  console.log(
-    "Delete request received for itemId:",
-    req.body.itemId,
-    "and index:",
-    req.body.index
-  )
-
-  const item = await Item.findById(itemId)
-
-  if (item.image && index >= 0 && index < item.image.length) {
-    item.image.splice(index, 1)
-  } else {
-    console.log("Invalid image index")
-  }
-
-  // Save the updated item
-  await item.save()
-
-  res.redirect("/item/edit?id=" + itemId)
 }
