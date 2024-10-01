@@ -4,6 +4,7 @@
 <p>
   <a href="/item/details?id=<%= item._id %>"> <%= item.name %> </a>
 </p>
+<label for="">price</label>
 <p><%= item.Price %></p>
 
 <% item.image.forEach(function(img) { %>
@@ -19,7 +20,7 @@
 <a href="/item/delete?id=<%= item._id %>">Delete</a>
 
 <form action="/cart/addToCart" method="POST" style="display: inline">
-  <input type="text" name="id" value="<%= item._id %>" />
+  <input type="hidden" name="id" value="<%= item._id %>" />
   <button type="submit">Add to cart</button>
 </form>
 <% }) %>

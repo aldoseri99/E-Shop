@@ -27,7 +27,7 @@ exports.item_add_post = (req, res) => {
 
   const itemData = {
     name: req.body.name,
-    price: req.body.Price,
+    Price: req.body.Price,
     qty: req.body.qty,
     category: req.body.category,
     image: fileNames,
