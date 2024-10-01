@@ -103,14 +103,14 @@ exports.item_edit_get = (req, res) => {
 
 exports.item_update_post = async (req, res) => {
   try {
-    const { id, category, name, price, qty } = req.body
+    const { id, category, name, Price, qty } = req.body
     const uploadedImages = req.files
 
     const item = await Item.findById(id)
 
     item.category = category
     item.name = name
-    item.price = price
+    item.Price = Price
     item.qty = qty
 
     if (uploadedImages) {
