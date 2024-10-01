@@ -27,10 +27,17 @@
     <input type="text" name="qty" class="form-control" />
   </div>
 
+  <input
+    type="hidden"
+    name="userId"
+    class="form-control"
+    value="<%= user._id%>"
+  />
   <div>
     <label for="">Image</label>
     <input name="images" type="file" accept="image/*" multiple />
   </div>
+
 
   <button type="submit" class="btn btn-outline-secondary">Add items</button>
 </form>
