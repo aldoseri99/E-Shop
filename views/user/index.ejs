@@ -8,18 +8,29 @@
 </style>
 
 <h1></h1>
-
-<div>
-  <h3>Name: <%= user.firstName%> <%= user.lastName%></h3>
-  <h3>Phone: <%=user.phone%></h3>
-  <h3>Email: <%=user.email%></h3>
+<div class="card" style="width: 20rem;">
   <% if(user.avatar===user.allData.photos[0].value){%>
   <img src="<%=user.avatar%>" alt="" class="pfp" />
   <%} else{%>
   <img src="/profileImages/<%=user.avatar%>" alt="" class="pfp" />
+  <br>
   <%}%> <% if(user.type === "admin"){%>
   <a href="/user/list">Users List</a>
   <%}%>
+  <div class="card-body">
+    <h3 class="card-title">User Profile</h5>
+    <p class="card-text">
+      <h4>Name: <%= user.firstName%> <%= user.lastName%></h4>
+      <h4>Phone: <%=user.phone%></h4>
+      <h4>Email: <%=user.email%></h4></p>
+    <a href="/user/edit" class="btn btn-primary">Edit Profile</a>
+  </div>
 </div>
 
-<a href="/user/edit">edit</a>
+<!-- <div>
+  <h3>Name: <%= user.firstName%> <%= user.lastName%></h3>
+  <h3>Phone: <%=user.phone%></h3>
+  <h3>Email: <%=user.email%></h3>
+  
+</div> -->
+
