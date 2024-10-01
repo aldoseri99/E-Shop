@@ -120,3 +120,27 @@ exports.item_details_get = (req, res) => {
       console.log(err)
     })
 }
+
+exports.itemImages_delete_post = async (req, res) => {
+  const { itemId, index } = req.body
+
+  console.log(
+    "Delete request received for itemId:",
+    req.body.itemId,
+    "and index:",
+    req.body.index
+  )
+
+  const item = await Item.findById(itemId)
+
+  if (item.image && index >= 0 && index < item.image.length) {
+    item.image.splice(index, 1)
+  } else {
+    console.log("Invalid image index")
+  }
+
+  // Save the updated item
+  await item.save()
+
+  res.redirect("/item/edit?id=" + itemId)
+}

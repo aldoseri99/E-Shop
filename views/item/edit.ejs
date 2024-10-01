@@ -43,13 +43,28 @@
   </div>
 
   <div>
-    <h4>Existing Images:</h4>
-    <% item.image.forEach(img => { %>
+    <label>images</label>
+    <br>
+    <% item.image.forEach((img,index) => { %>
+      
       <img src="/itemImages/<%= img %>" alt="Item Image" style="width: 100px; height: auto;">
+
+      <br>
+      
+      <form action="/item/deleteImage" method="POST" style="display:inline;">
+        <input type="hidden" name="itemId" value="<%= item._id %>">
+        <input type="hidden" name="index" value="<%= index %>">
+        <button type="submit">Delete</button>
+      </form>
+
+
     <% }) %>
   </div>
-  
-  <input type="file" name="files" multiple>
+
+  <div>
+    <label>Upload New Images</label>
+    <input type="file" name="image" multiple>
+  </div>
 
   <input type="hidden" name="id" value="<%= item._id %>" />
 
