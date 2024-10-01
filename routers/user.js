@@ -6,14 +6,18 @@ router.use(express.urlencoded({ extended: true }))
 
 const userCtrl = require('../controllers/user')
 
-router.get('/index', userCtrl.user_index_get)
+const ensureLoggedIn = require("../config/ensureLoggedin")
 
-router.get('/edit', userCtrl.user_edit_get)
-router.post('/edit', upload.single('avatar'), userCtrl.user_edit_post)
+const ensureAdmin = require("../config/ensureAdmin")
 
-router.get('/list', userCtrl.user_list_get)
+router.get('/index', ensureLoggedIn, userCtrl.user_index_get)
 
-router.get('/useredit', userCtrl.user_adminedit_get)
-router.post('/useredit', userCtrl.user_adminedit_post)
+router.get('/edit', ensureLoggedIn, userCtrl.user_edit_get)
+router.post('/edit',ensureLoggedIn, upload.single('avatar'), userCtrl.user_edit_post)
+
+router.get('/list', [ensureLoggedIn, ensureAdmin], userCtrl.user_list_get)
+
+router.get('/useredit', [ensureLoggedIn, ensureAdmin], userCtrl.user_adminedit_get)
+router.post('/useredit', [ensureLoggedIn, ensureAdmin], userCtrl.user_adminedit_post)
 
 module.exports = router

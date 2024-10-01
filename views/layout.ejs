@@ -32,7 +32,7 @@
       <a href="/user/list" class="btn btn-outline-primary">Users List</a>
       <a href="/user/index" class="btn btn-outline-primary">My Profile</a>
       <a href="/logout" class="btn btn-outline-primary">Logout</a>
-      <% } else if(user.type === 'costumer') { %>
+      <% } else if(user.type === 'customer') { %>
       <a href="/item/index" class="btn btn-outline-primary">Items</a>
       <a href="/category/index" class="btn btn-outline-primary">Category</a>
       <a href="/cart/index" class="btn btn-outline-primary">Cart</a>
@@ -41,7 +41,6 @@
       <% }} else{%>
       <a href="/item/index" class="btn btn-outline-primary">Items</a>
       <a href="/category/index" class="btn btn-outline-primary">Category</a>
-      <a href="/user/index" class="btn btn-outline-primary">My Profile</a>
       <a href="/auth/google" class="btn btn-outline-primary">Sign In</a>
       <% } %>
     </nav>
