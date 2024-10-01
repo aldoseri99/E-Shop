@@ -1,10 +1,20 @@
-<div class="card">
+<div class="search-container">
+  <form action="/user/list" method="GET">
+    <input
+      type="text"
+      name="query"
+      placeholder="Search for items..."
+      class="form-control"
+    />
+    <button type="submit" class="btn btn-primary">Search</button>
+  </form>
+</div>
+
+<div class="items-container">
   <table
-    class="table table-striped"
-    ...
     style="border: 1px solid black; border-collapse: collapse; font-size: 30px"
   >
-    <% users.forEach((account )=>{%>
+    <% if (users.length > 0) { %> <% users.forEach((account )=>{%>
     <tr style="border: 1px solid black">
       <td style="border: 1px solid black"><%=account.firstName%></td>
       <td style="border: 1px solid black"><%=account.lastName%></td>
@@ -16,4 +26,8 @@
     </tr>
     <%})%>
   </table>
+
+  <% } else { %>
+  <p><%= message %></p>
+  <%} %>
 </div>
