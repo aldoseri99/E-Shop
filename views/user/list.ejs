@@ -1,15 +1,19 @@
-<table
-  style="border: 1px solid black; border-collapse: collapse; font-size: 30px"
->
-  <% users.forEach((account )=>{%>
-  <tr style="border: 1px solid black">
-    <td style="border: 1px solid black"><%=account.firstName%></td>
-    <td style="border: 1px solid black"><%=account.lastName%></td>
-    <td style="border: 1px solid black"><%=account.type%></td>
-    <td>
-      <a href="useredit?id=<%=account._id%>">edit</a>
-      <a href="index">back</a>
-    </td>
-  </tr>
-  <%})%>
-</table>
+<div class="card">
+  <table
+    class="table table-striped"
+    ...
+    style="border: 1px solid black; border-collapse: collapse; font-size: 30px"
+  >
+    <% users.forEach((account )=>{%>
+    <tr style="border: 1px solid black">
+      <td style="border: 1px solid black"><%=account.firstName%></td>
+      <td style="border: 1px solid black"><%=account.lastName%></td>
+      <td style="border: 1px solid black"><%=account.type%></td>
+      <td>
+        <a href="useredit?id=<%=account._id%>">edit</a>
+        <a href="index">back</a>
+      </td>
+    </tr>
+    <%})%>
+  </table>
+</div>
