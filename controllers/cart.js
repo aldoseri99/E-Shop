@@ -51,7 +51,7 @@ exports.cart_index_get = (req, res) => {
       }
 
       const items = cart.items
-      res.render('cart/index', { items })
+      res.render('cart/index', { items, cart })
     })
     .catch((err) => {
       console.log(err)

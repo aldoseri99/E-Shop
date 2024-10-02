@@ -1,21 +1,60 @@
 const Order = require('../models/Order')
+const dayjs = require('dayjs')
+var relativeTime = require('dayjs/plugin/relativeTime')
+var utc = require('dayjs/plugin/utc')
+var timezone = require('dayjs/plugin/timezone')
+dayjs.extend(relativeTime)
+dayjs.extend(utc)
+dayjs.extend(timezone)
 
 exports.order_index_get = (req, res) => {
   Order.find()
-    .populate('orders')
+    .populate({
+      path: 'order',
+      populate: {
+        path: 'items.item',
+        populate: {
+          path: 'userId',
+          model: 'User'
+        }
+      }
+    })
+    .populate('userId') // Populate userId for the order
     .then((orders) => {
-      res.render('order/index', { orders })
+      res.render('order/index', { orders, dayjs })
     })
     .catch((err) => {
-      console.log(err)
+      console.error('Error fetching orders:', err)
+      res.status(500).send('Internal Server Error')
     })
 }
 
-exports.order_create_post = (req, res) => {
-  Order.find()
-    .populate('orders')
-    .then((orders) => {
-      res.redirect('/order/index', { orders })
+exports.order_update_post = (req, res) => {
+  Order.findByIdAndUpdate(req.body.orderId, {
+    $set: {
+      orderStatus: req.body.status
+    }
+  })
+    .then(() => {
+      Order.find()
+        .populate({
+          path: 'order',
+          populate: {
+            path: 'items.item',
+            populate: {
+              path: 'userId',
+              model: 'User'
+            }
+          }
+        })
+        .populate('userId') // Populate userId for the order
+        .then((orders) => {
+          res.render('order/index', { orders, dayjs })
+        })
+        .catch((err) => {
+          console.error('Error fetching orders:', err)
+          res.status(500).send('Internal Server Error')
+        })
     })
     .catch((err) => {
       console.log(err)
