@@ -265,23 +265,15 @@ h4 {
 /*Nav Bar */
 
 nav {
-  margin: 0;
   padding: 200;
-  overflow: hidden;
+
   background-color: #262526;
   position: -webkit-sticky;
   position: sticky;
-  top: 0;
-  float: left;
-  display: block;
-  color: white;
-
-  padding: 14px 16px;
-  text-decoration: none;
 }
 
 nav a {
-  color: white;
+  color: #262526;
   font-size: 20px;
 }
 nav a:hover {
