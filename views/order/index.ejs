@@ -3,8 +3,9 @@
 <ul>
   <% orders.forEach(order => { %> <% if(order.userId.id === user.id || user.type
   === 'admin'){%>
-    <p><%= orders%></p>
+    
   <li>
+    <p>t<%= order %></p>
     <h3>Order ID: <%= order._id %></h3>
     <p>User: <%= order.userId.firstName %> <%= order.userId.lastName %></p>
     <p>

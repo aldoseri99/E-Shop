@@ -12,7 +12,7 @@ exports.order_index_get = (req, res) => {
     .populate({
       path: 'order',
       populate: {
-        path: 'items.item',
+        path: 'items',
         populate: {
           path: 'userId',
           model: 'User'
@@ -21,6 +21,7 @@ exports.order_index_get = (req, res) => {
     })
     .populate('userId') // Populate userId for the order
     .then((orders) => {
+      console.log(orders)
       res.render('order/index', { orders, dayjs })
     })
     .catch((err) => {
