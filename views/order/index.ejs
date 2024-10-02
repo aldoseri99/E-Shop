@@ -27,7 +27,10 @@
     <ul>
       <% order.order.forEach(cart => { %> <% cart.items.forEach(cartItem => { %>
       <li>
-        <%= cartItem.item.name %> - Quantity: <%= cartItem.qty %>
+        <p>Item Name: <%= cartItem.item.name %></p>
+        <p>Price: <%= cartItem.item.price %></p>
+        <p>Quantity: <%= cartItem.qty %>
+        <p>Subtotal: $<%= cartItem.item.price * cartItem.qty %></p>  
         <p>
           Seller: <%= cartItem.item.userId ? cartItem.item.userId.name :
           'Unknown' %>
