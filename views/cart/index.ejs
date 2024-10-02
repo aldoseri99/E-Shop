@@ -1,38 +1,70 @@
-<h1>Your Cart</h1>
+<h2>Your Cart</h2>
 <% if (items.length > 0) { %>
 <ul>
   <% items.forEach(function(cartItem) { %>
-  <li>
-    <p><%= cartItem.item.name %> - Price: <%= cartItem.item.Price %></p>
-
-    <div>
-      <p>Quantity: <%= cartItem.qty %></p>
+  <li class="d-flex align-items-center mb-3">
+    <div class="me-3">
+      <img
+        src="/itemImages/<%= cartItem.item.image[0] %>"
+        alt="<%= cartItem.item.name %> image"
+        class="img-fluid"
+        style="width: 150px; height: auto"
+      />
     </div>
 
-    <form action="/cart/increase" method="POST" style="display: inline">
-      <input type="text" name="id" value="<%= cartItem.item._id %>" />
-      <button type="submit"><i class="fa-solid fa-plus"></i></button>
-    </form>
+    <div class="flex-grow-1">
+      <p class="mb-0 cart-product-details">
+        <strong><%= cartItem.item.name %></strong> - $<%= cartItem.item.Price %>
+      </p>
+    </div>
 
-    <form action="/cart/decrease" method="POST" style="display: inline">
-      <input type="text" name="id" value="<%= cartItem.item._id %>" />
-      <button type="submit"><i class="fa-solid fa-minus"></i></button>
-    </form>
+    <div class="d-flex align-items-center">
+      <form action="/cart/decrease" method="POST" class="d-inline">
+        <input type="hidden" name="id" value="<%= cartItem.item._id %>" />
+        <button type="submit" class="btn btn-outline-secondary">
+          <i class="bi bi-dash"></i>
+        </button>
+      </form>
 
-    <a href="/cart/delete?id=<%= cartItem.item._id %>"><i class="fa-solid fa-trash"></i></a>
+      <p class="mx-3 mb-0 cart-product-details"><%= cartItem.qty %></p>
+
+      <form action="/cart/increase" method="POST" class="d-inline">
+        <input type="hidden" name="id" value="<%= cartItem.item._id %>" />
+        <button type="submit" class="btn btn-outline-secondary">
+          <i class="bi bi-plus"></i>
+        </button>
+      </form>
+
+      <a
+        href="/cart/delete?id=<%= cartItem.item._id %>"
+        class="btn btn-outline-danger ms-3"
+      >
+        <i class="bi bi-trash"></i>
+      </a>
+    </div>
+
   </li>
 
   <% }); %> <% const newItem = items.map(cartItem => cartItem.item.Price *
   cartItem.qty); const totalItem = newItem.reduce((accumulator, value) =>
   accumulator + value, 0); %>
-  <h3>Total: <%= totalItem %></h3>
 
-  <form method="POST" action="/checkout/index">
-    <input value="<%= JSON.stringify(items) %>" type="hidden" name="items" />
-    <input value="<%= JSON.stringify(cart) %>" type="hidden" name="cart" />
-    <input value="<%= totalItem %>" type="hidden" name="total" />
-    <button type="submit">submit</button>
-  </form>
+  <hr />
+  <h3>Total: $ <%= totalItem %></h3>
+  <br />
+
+  <div class="d-flex justify-content-between mt-4">
+    <a href="/item/index" class="cart-continue-shopping"
+      ><i class="bi bi-arrow-left"></i> Continue Shopping</a
+    >
+
+    <form method="POST" action="/checkout/index">
+      <input value="<%= JSON.stringify(items) %>" type="hidden" name="items" />
+      <input value="<%= JSON.stringify(cart) %>" type="hidden" name="cart" />
+      <input value="<%= totalItem %>" type="hidden" name="total" />
+      <button class="btn btn-primary" type="submit">checkout</button>
+    </form>
+  </div>
 </ul>
 <% } else { %>
 <p><%= message %></p>
