@@ -237,6 +237,25 @@ main {
   padding-right: 10px;
 }
 
+.search-form {
+  display: flex;
+  align-items: center;
+}
+
+.search-form input {
+  height: 40px;
+  border-top-right-radius: 0px;
+  border-bottom-right-radius: 0px;
+}
+.search-form button {
+  height: 40px;
+  font-size: 15px;
+  margin-top: -10px;
+  border-radius: 5px;
+  border-top-left-radius: 0px;
+  border-bottom-left-radius: 0px;
+}
+
 /*item style */
 
 .item-container {
@@ -304,4 +323,8 @@ h1 .home-title {
 
 .cart-product-details {
   font-size: 23px;
+}
+
+.item-table tr td {
+  vertical-align: middle;
 }

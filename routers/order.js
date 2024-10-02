@@ -16,5 +16,6 @@ const orderCntrl = require('../controllers/order')
 
 router.get('/index', orderCntrl.order_index_get)
 router.post('/update', orderCntrl.order_update_post)
+router.post('/detail', orderCntrl.order_detail_post)
 
 module.exports = router

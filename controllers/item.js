@@ -33,7 +33,8 @@ exports.item_add_post = (req, res) => {
     category: req.body.category,
     description: req.body.description,
     image: fileNames,
-    status: req.body.status
+    status: req.body.status,
+    userId: req.user._id
   }
 
   let item = new Item(itemData)

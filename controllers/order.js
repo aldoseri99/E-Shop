@@ -12,7 +12,6 @@ exports.order_index_get = (req, res) => {
     .populate('userId')
     .populate('order')
     .then((orders) => {
-      console.log(orders)
       res.render('order/index', { orders, dayjs })
     })
     .catch((err) => {
@@ -32,7 +31,6 @@ exports.order_update_post = (req, res) => {
         .populate('userId')
         .populate('order')
         .then((orders) => {
-          console.log(orders)
           res.render('order/index', { orders, dayjs })
         })
         .catch((err) => {
@@ -42,5 +40,22 @@ exports.order_update_post = (req, res) => {
     })
     .catch((err) => {
       console.log(err)
+    })
+}
+
+exports.order_detail_post = (req, res) => {
+  Order.findById(req.body.orderId)
+    .populate({
+      path: 'order.item',
+      model: 'Item'
+    })
+    .populate('userId')
+    .then((order) => {
+      console.log(order)
+      res.render('order/detail', { order, dayjs })
+    })
+    .catch((err) => {
+      console.error('Error fetching order details:', err)
+      res.status(500).send('Internal Server Error')
     })
 }

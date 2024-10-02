@@ -1,16 +1,22 @@
-<style>
-  td {
-    border: 1px solid black;
-    border-collapse: collapse;
-    padding: 0px 10px;
-  }
-</style>
-
 <h1>My Items</h1>
-<% items.forEach((item)=>{ %>
-<table>
+<table class="table item-table">
   <tr>
-    <td><img src="../itemImages/<%= item.image[0]%>" alt="" /></td>
+    <td></td>
+    <td>Item Title</td>
+    <td>Quantity</td>
+    <td>Price</td>
+    <td></td>
+    <td></td>
+  </tr>
+  <% items.forEach((item)=>{ %>
+  <tr>
+    <td>
+      <img
+        src="../itemImages/<%= item.image[0]%>"
+        alt=""
+        style="height: 150px"
+      />
+    </td>
     <td><%= item.name %></td>
     <td><%= item.qty %></td>
     <td><%= item.Price %></td>
@@ -25,5 +31,5 @@
       ></a>
     </td>
   </tr>
+  <%})%>
 </table>
-<%})%>
