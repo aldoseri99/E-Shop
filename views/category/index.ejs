@@ -14,16 +14,9 @@
       <h2 class="category-name"><%= category.name %></h2>
 
       <% if(user){ if(user.type === 'seller' || user.type === 'admin') { %>
-      <a
-        class="btn btn-outline-secondary"
-        href="/category/edit?id=<%= category._id %>"
-        >edit</a
-      >
-      <a
-        class="btn btn-outline-secondary"
-        href="/category/delete?id=<%= category._id %>"
-        >delete</a
-      >
+      <a href="/category/edit?id=<%= category._id %>">Edit <i class="fa-solid fa-pen-to-square"></i></a>
+      <a href="/category/delete?id=<%= category._id %>">Delete <i class="fa-solid fa-trash"></i></a>
+
       <% } } %>
     </div>
   </a>

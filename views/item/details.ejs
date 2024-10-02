@@ -48,12 +48,12 @@
 
         <form action="/cart/addToCart" method="POST" style="display: inline">
           <input type="hidden" name="id" value="<%= item._id %>" />
-          <button class="btn btn-primary" type="submit">Add to cart</button>
+          <button class="btn btn-primary" type="submit"><i class="fa-solid fa-cart-plus"></i></button>
         </form>
 
         <hr />
         <h3>Description</h3>
-        <p><%= item.description %></pp>
+        <p><%= item.description %></p>
       </div>
     </div>
   </div>
