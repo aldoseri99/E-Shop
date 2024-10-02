@@ -34,8 +34,11 @@
     </form>
     <%} else{%>
       <p>Status: <%= order.orderStatus %></p>
-    <%}%>
-    <a class="btn btn-primary" href="order/detail">Details</a>
+      <%}%>
+      <form method="POST" action="/order/detail">
+      <input type="hidden" name="orderId" value="<%= order._id%>" id="" />
+      <button class="btn btn-primary">Details</button>
+    </form>
   </li>
   <hr>
   <br>

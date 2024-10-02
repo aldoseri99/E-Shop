@@ -18,7 +18,10 @@ exports.checkout_index_post = (req, res) => {
       order: []
     })
     cart.items.forEach((item) => {
-      order.order.push(item.item)
+      order.order.push({
+        item: item.item, // Reference the item from the cart
+        qty: item.qty // Keep the quantity from the cart
+      })
     })
     order
       .save()

@@ -4,8 +4,11 @@ const orderSchema = mongoose.Schema(
   {
     order: [
       {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'Item'
+        item: {
+          type: mongoose.Schema.Types.ObjectId,
+          ref: 'Item'
+        },
+        qty: Number
       }
     ],
     totalAmount: {
