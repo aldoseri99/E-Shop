@@ -9,8 +9,13 @@ const itemsSchema = mongoose.Schema(
     image: [String],
     category: {
       type: mongoose.Schema.Types.ObjectId,
-      ref: "Category",
+      ref: 'Category'
     },
+    userId: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'User'
+    }
+
   },
   {
     timestamps: true,

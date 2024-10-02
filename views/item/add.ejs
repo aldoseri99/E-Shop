@@ -27,6 +27,12 @@
     <input type="text" name="qty" class="form-control" />
   </div>
 
+  <input
+    type="hidden"
+    name="userId"
+    class="form-control"
+    value="<%= user._id%>"
+  />
   <div>
     <label class="form-label">description</label>
     <input type="text" name="description" class="form-control" />
@@ -44,4 +50,5 @@
   </div>
 
   <button type="submit" class="btn btn-primary">Add items</button>
+
 </form>
