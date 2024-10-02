@@ -1,6 +1,6 @@
 /* Global body style */
 body {
-  font-family: 'Cormorant';
+  font-family: "Cormorant";
   background-color: #ffffff;
   margin: 0;
   padding: 0;
@@ -233,7 +233,7 @@ main {
 
 .item-image {
   width: 400px;
-  height: 'auto';
+  height: "auto";
 }
 
 .item-card {
@@ -282,6 +282,7 @@ h1 .home-title {
   display: block;
   margin-left: auto;
   margin-right: auto;
+}
 /*cart*/
 
 .cart-continue-shopping {
@@ -290,4 +291,14 @@ h1 .home-title {
 
 .cart-product-details {
   font-size: 23px;
+}
+
+/*checkout */
+
+.checkout-header {
+  color: #ff7062;
+}
+
+.checkout-table td {
+  font-size: 20px;
 }

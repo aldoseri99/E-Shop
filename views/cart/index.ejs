@@ -14,7 +14,8 @@
 
     <div class="flex-grow-1">
       <p class="mb-0 cart-product-details">
-        <strong><%= cartItem.item.name %></strong> - $<%= cartItem.item.Price %>
+        <strong><%= cartItem.item.name %></strong> - <%= cartItem.item.Price %>
+        BD
       </p>
     </div>
 
@@ -49,7 +50,7 @@
   accumulator + value, 0); %>
 
   <hr />
-  <h3>Total: $ <%= totalItem %></h3>
+  <h3>Total: <%= totalItem %> BD</h3>
   <br />
 
   <div class="d-flex justify-content-between mt-4">
