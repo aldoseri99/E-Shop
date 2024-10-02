@@ -5,11 +5,18 @@
 
   <a href="/category/details?id=<%= category._id %>">
     <div class="category-card">
-      <h2 category-name><%= category.name %></h2>
+      <img
+        src="/categoryImages/<%= category.image %>"
+        alt="<%= category.name %> image"
+        style="width: 200px; height: auto"
+      />
+
+      <h2 class="category-name"><%= category.name %></h2>
 
       <% if(user){ if(user.type === 'seller' || user.type === 'admin') { %>
-      <a href="/category/edit?id=<%= category._id %>">edit</a>
-      <a href="/category/delete?id=<%= category._id %>">delete</a>
+      <a href="/category/edit?id=<%= category._id %>">Edit <i class="fa-solid fa-pen-to-square"></i></a>
+      <a href="/category/delete?id=<%= category._id %>">Delete <i class="fa-solid fa-trash"></i></a>
+
       <% } } %>
     </div>
   </a>

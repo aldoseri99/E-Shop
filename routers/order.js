@@ -15,5 +15,6 @@ router.use(
 const orderCntrl = require('../controllers/order')
 
 router.get('/index', orderCntrl.order_index_get)
+router.post('/update', orderCntrl.order_update_post)
 
 module.exports = router

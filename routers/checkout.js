@@ -11,6 +11,6 @@ router.use(
 
 const checkoutCntrl = require('../controllers/checkout')
 
-router.get('/index', checkoutCntrl.checkout_index_get)
+router.post('/index', checkoutCntrl.checkout_index_post)
 
 module.exports = router

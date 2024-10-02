@@ -1,20 +1,47 @@
 <h1>Your Order</h1>
 <% if (orders.length > 0) { %>
 <ul>
-  <% orders.forEach(order => { %>
+
+  <% orders.forEach(order => { %> <% if(order.userId.id === user.id || user.type
+  === 'admin'){%>
+    <p><%= orders%></p>
   <li>
     <h3>Order ID: <%= order._id %></h3>
-    <p>User: <%= req.user.name %></p>
+    <p>User: <%= order.userId.firstName %> <%= order.userId.lastName %></p>
+    <p>
+      Created at: <%= dayjs(order.createdAt).utc(true).format('D MMM, YYYY')%>
+    </p>
     <p>Total Amount: $<%= order.totalAmount %></p>
-    <p>Status: <%= order.orderStatus %></p>
-    <p>Payment Status: <%= order.paymentStatus %></p>
+    <% if(user.type === 'admin'){%>
+      <form method="POST" action="/order/update">
+        <select name="status" id="">
+          <% if(order.orderStatus === 'Processing')%>
+          <option <%= order.orderStatus === 'Processing'?'Selected':''%> value="Processing">Processing</option>
+          <option <%= order.orderStatus === 'Pending'?'Selected':''%> value="Pending">Pending</option>
+        <option <%= order.orderStatus === 'Delivered'?'Selected':''%> value="Delivered">Delivered</option>
+      </select>
+      <input type="hidden" name="orderId" value="<%= order._id%>" id="" />
+      <button class="btn btn-primary" type="submit">confirm</button>
+    </form>
+    <%} else{%>
+      <p>Status: <%= order.orderStatus %></p>
+      <%}%>
     <ul>
-      <% order.cart.items.forEach(item => { %>
-      <li><%= item.name %> - Quantity: <%= item.quantity %></li>
-      <% }) %>
+      <% order.order.forEach(cart => { %> <% cart.items.forEach(cartItem => { %>
+      <li>
+        <p>Item Name: <%= cartItem.item.name %></p>
+        <p>Price: <%= cartItem.item.price %></p>
+        <p>Quantity: <%= cartItem.qty %>
+        <p>Subtotal: $<%= cartItem.item.price * cartItem.qty %></p>  
+        <p>
+          Seller: <%= cartItem.item.userId ? cartItem.item.userId.name :
+          'Unknown' %>
+        </p>
+      </li>
+      <% }) %> <% }) %>
     </ul>
   </li>
-  <% }) %>
+  <%} %> <% }) %>
 </ul>
 <% } else { %>
 <p>No orders found</p>

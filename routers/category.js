@@ -15,11 +15,15 @@ router.use(
 const categoryCntrl = require("../controllers/category")
 
 router.get("/add", categoryCntrl.category_add_get)
-router.post("/add", categoryCntrl.category_add_post)
+router.post("/add", upload.single("images"), categoryCntrl.category_add_post)
 router.get("/index", categoryCntrl.category_index_get)
 router.get("/delete", categoryCntrl.category_delete_get)
 router.get("/edit", categoryCntrl.category_edit_get)
-router.post("/update", categoryCntrl.category_update_post)
+router.post(
+  "/update",
+  upload.single("images"),
+  categoryCntrl.category_update_post
+)
 router.get("/details", categoryCntrl.category_details_get)
 
 module.exports = router
