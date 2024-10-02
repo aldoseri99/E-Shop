@@ -225,6 +225,7 @@ nav a:hover {
 
 main {
   padding: 20px;
+  height: 100%;
 }
 
 .pfp {
@@ -352,6 +353,28 @@ h1 .home-title {
   object-fit: cover;
   border-radius: 50%;
   border: 1px solid white;
+}
+
+.col img {
+  height: 700px;
+  width: 550px;
+  object-fit: cover;
+}
+
+.carousel-item img {
+  height: 400px;
+  width: 500px;
+  object-fit: cover;
+}
+
+footer {
+  background-color: #ff7062;
+  /* height: px; */
+  display: flex;
+  justify-content: center;
+  align-items: end;
+  color: #262526;
+  font-weight: 800;
 }
 
 @media (max-width: 991.5px) {

@@ -11,11 +11,11 @@ router.use(
 )
 
 //imoprt controller
-
+const ensureLoggedIn = require('../config/ensureLoggedin')
 const orderCntrl = require('../controllers/order')
 
-router.get('/index', orderCntrl.order_index_get)
-router.post('/update', orderCntrl.order_update_post)
-router.post('/detail', orderCntrl.order_detail_post)
+router.get('/index', ensureLoggedIn, orderCntrl.order_index_get)
+router.post('/update', ensureLoggedIn, orderCntrl.order_update_post)
+router.post('/detail', ensureLoggedIn, orderCntrl.order_detail_post)
 
 module.exports = router

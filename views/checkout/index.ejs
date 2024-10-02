@@ -8,7 +8,10 @@
 
   <div class="row">
     <div class="col-12">
-      <table class="table table-bordered table-striped checkout-table">
+      <table
+        class="table table-bordered table-striped checkout-table"
+        style="vertical-align: middle"
+      >
         <thead class="thead-dark">
           <tr>
             <th>#</th>
@@ -27,7 +30,12 @@
                 src="/itemImages/<%= item.item.image[0] %>"
                 alt="<%= item.item.name %>"
                 class="img-fluid"
-                style="max-height: 100px; width: auto"
+                style="
+                  width: 150px;
+                  height: 150px;
+                  object-fit: cover;
+                  object-position: bottom;
+                "
               />
             </td>
             <td><%= item.item.name %></td>

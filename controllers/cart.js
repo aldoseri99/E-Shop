@@ -6,28 +6,22 @@ exports.cart_addToCart_post = async (req, res) => {
   const userId = req.user._id
 
   try {
-    //get user cart
     let cart = await Cart.findOne({ userId: userId })
     console.log(cart)
 
-    //if it does not exist create one with empty items array
     if (!cart) {
       cart = new Cart({ userId: userId, items: [] })
     }
-    //check if the item exist in the items array
     const existingItem = cart.items.find((cartItem) =>
       cartItem.item.equals(itemId)
     )
 
-    //if it does exist just increase the quantity
     if (existingItem) {
       existingItem.qty += 1
     } else {
-      //if it does not add it with qty 1
       cart.items.push({ item: itemId, qty: 1 })
     }
 
-    //save changes
     await cart.save()
 
     let item = await Item.findById(itemId)
