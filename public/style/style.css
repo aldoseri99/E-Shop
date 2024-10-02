@@ -1,13 +1,13 @@
 /* Global body style */
 body {
-  font-family: 'Cormorant';
+  font-family: "Cormorant";
   background-color: #ffffff;
   margin: 0;
   padding: 0;
   color: #262526;
   width: 100vw;
 }
-/* Header styling */
+
 /* Header styling */
 header {
   display: flex;
@@ -115,6 +115,7 @@ header {
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   display: none;
   width: 150px;
+  z-index: 10;
 }
 .profile-dropdown ul {
   list-style: none;
@@ -147,7 +148,7 @@ header {
   color: #262526;
   margin-bottom: 30px;
 }
-*/ .box {
+.box {
   background-color: #ffffff;
   padding: 40px;
   border-radius: 15px;
@@ -164,7 +165,7 @@ header {
 .btn-primary {
   background-color: #ff7062;
   border: none;
-  padding: 15px 30px;
+  padding: 10px 20px;
   color: #fff;
   border-radius: 30px;
   font-size: 1.2rem;
@@ -177,12 +178,6 @@ header {
 }
 .btn-lg {
   font-size: 1.3rem;
-}
-
-h1,
-.noStyle {
-  text-decoration: none;
-  color: #ffffff;
 }
 
 a {
@@ -229,12 +224,48 @@ h4 {
   width: 50px;
 }
 
+/*Category style */
+
+.category-container {
+  display: flex;
+  flex-wrap: wrap;
+}
+.category-card {
+  border: 1px solid black;
+  width: 18rem;
+  padding: 20px;
+  margin: 10px;
+  text-align: center;
+  border-radius: 15px;
+}
+
+.category-header {
+  color: #818589;
+  font-size: 25px;
+  margin-bottom: 50px;
+}
+
+.category-header a {
+  color: #818589;
+}
+/*Form Style */
+
+.form-label {
+  font-size: 25px;
+}
+
+.form-control {
+  margin-bottom: 10px;
+}
+
+/*Nav Bar */
+
 nav {
   margin: 0;
   padding: 200;
   overflow: hidden;
   background-color: #262526;
-  position: -webkit-sticky; 
+  position: -webkit-sticky;
   position: sticky;
   top: 0;
   float: left;
@@ -244,6 +275,56 @@ nav {
   padding: 14px 16px;
   text-decoration: none;
 }
+
+nav a {
+  color: white;
+  font-size: 20px;
+}
 nav a:hover {
   color: #ff7062;
+}
+
+.logo {
+  width: 100px;
+}
+
+.nav-title {
+  color: white;
+}
+
+main {
+  padding: 20px;
+}
+
+/*item style */
+
+.item-container {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.item-image {
+  width: 400px;
+  height: "auto";
+}
+
+.item-card {
+  margin: 10px;
+  padding: 10px;
+}
+
+.item-card h3 {
+  color: black;
+  margin-top: 5px;
+  font-size: 30;
+}
+
+.item-card p {
+  color: black;
+  font-size: 20px;
+  color: grey;
+}
+
+.item-detail-image {
+  width: 400px;
 }

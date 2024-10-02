@@ -1,2 +1,60 @@
-<h3><%= item.name %></h3>
-<h3><%= item.Price %></h3>
+<div class="container">
+  <div class="row justify-content-center">
+    <!-- Thumbnail column (left side) -->
+    <div class="col-md-2 mx-auto">
+      <div class="carousel-thumbnails d-flex flex-column align-items-center">
+        <% item.image.forEach((img, index) => { %>
+        <button
+          type="button"
+          data-bs-target="#carouselExample"
+          data-bs-slide-to="<%= index %>"
+          class="<%= index === 0 ? 'active' : '' %> mb-3"
+        >
+          <img
+            src="/itemImages/<%= img %>"
+            class="img-fluid item-detail-image"
+            alt="Thumbnail <%= index + 1 %>"
+            style="width: 80px; height: auto; cursor: pointer"
+          />
+        </button>
+        <% }) %>
+      </div>
+    </div>
+
+    <!-- Carousel column -->
+    <div class="col-md-5 mx-auto">
+      <div id="carouselExample" class="carousel slide">
+        <div class="carousel-inner">
+          <% item.image.forEach((img, index) => { %>
+          <div class="carousel-item <%= index === 0 ? 'active' : '' %>">
+            <img
+              src="/itemImages/<%= img %>"
+              class="d-block w-100"
+              alt="Item Image"
+              style="max-width: 300px; height: auto"
+            />
+          </div>
+          <% }) %>
+        </div>
+      </div>
+    </div>
+
+    <!-- Item description column -->
+    <div class="col-md-5 mx-auto">
+      <div>
+        <h3><%= item.name %></h3>
+
+        <h3>$ <%= item.Price %></h3>
+
+        <form action="/cart/addToCart" method="POST" style="display: inline">
+          <input type="hidden" name="id" value="<%= item._id %>" />
+          <button class="btn btn-primary" type="submit">Add to cart</button>
+        </form>
+
+        <hr />
+        <h3>Description</h3>
+        <p><%= item.description %></pp>
+      </div>
+    </div>
+  </div>
+</div>
