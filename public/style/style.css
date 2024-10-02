@@ -231,9 +231,8 @@ h4 {
   flex-wrap: wrap;
 }
 .category-card {
-  border: 1px solid black;
   width: 18rem;
-  padding: 20px;
+  padding: 10px;
   margin: 10px;
   text-align: center;
   border-radius: 15px;
@@ -247,6 +246,11 @@ h4 {
 
 .category-header a {
   color: #818589;
+}
+
+.category-name {
+  color: black;
+  margin-top: 20px;
 }
 /*Form Style */
 

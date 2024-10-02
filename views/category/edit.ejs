@@ -1,6 +1,6 @@
 <h2>Update category</h2>
 
-<form action="/category/update" method="POST">
+<form action="/category/update" method="POST" enctype="multipart/form-data">
   <div>
     <label class="form-label">name</label>
     <input
@@ -11,6 +11,9 @@
       value="<%= category.name %>"
     />
   </div>
+
+
+  
 
   
   <div class="d-grid"></div>

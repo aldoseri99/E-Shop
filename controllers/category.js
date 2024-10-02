@@ -1,12 +1,29 @@
 const Category = require("../models/Category")
 const Item = require("../models/Item")
 
+const multer = require("multer")
+
+let fileName
+const storage = multer.diskStorage({
+  destination: function (req, file, cb) {
+    cb(null, "./public/categoryImages")
+  },
+  filename: function (req, file, cb) {
+    fileName = Date.now() + "-" + file.originalname
+    cb(null, fileName)
+  },
+})
+upload = multer({ storage })
+
 exports.category_add_get = (req, res) => {
   res.render("category/add")
 }
 
 exports.category_add_post = (req, res) => {
-  let category = new Category(req.body)
+  let category = new Category({
+    name: req.body.name,
+    image: req.file.filename, // Store the filename in the database
+  })
 
   category
     .save()
