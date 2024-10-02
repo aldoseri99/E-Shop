@@ -27,7 +27,6 @@
     <link rel="stylesheet" href="/style/style.css" />
   </head>
   <body>
-    <br />
 
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
       <div class="container-fluid">
@@ -51,19 +50,15 @@
 
             <% if(user){
               if(user.type === 'seller') { %>
-            <li class="nav-item">
-              <a class="nav-link" href="/item/add">Add Items</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="/category/add">Add category</a>
-            </li>
-            <li class="nav-item"><a class="nav-link" href="/order/index">Orders</a></li>
-            <li class="nav-item"><a class="nav-link" href="/item/myItems">My Items</a></li>
+              <li class="nav-item"><a class="nav-link" href="/item/add">Add Items</a></li>
+              <li class="nav-item"><a class="nav-link" href="/category/add">Add category</a></li>
+              <li class="nav-item"><a class="nav-link" href="/order/index">Orders</a></li>
+              <li class="nav-item"><a class="nav-link" href="/item/myItems">My Items</a></li>
             <% } else if(user.type === 'admin') { %>
-            <li class="nav-item">
-              <a class="nav-link" href="/user/list">Users List</a>
-            </li>
-            <li class="nav-item"><a class="nav-link" href="/order/index">Orders</a></li>
+              <li class="nav-item"></li><a class="nav-link" href="/item/index">Items</a></li>
+              <li class="nav-item"><a class="nav-link" href="/category/index">Category</a></li>
+              <li class="nav-item"><a class="nav-link" href="/user/list">Users List</a></li>
+              <li class="nav-item"><a class="nav-link" href="/order/index">Orders</a></li>
             <% } else if(user.type === 'customer') { %>
               
             <li class="nav-item"><a class="nav-link" href="/item/index">Items</a></li>
@@ -109,12 +104,12 @@
           </ul>
 
 
-          <ul class="navbar-nav ms-auto">
+          <ul class="navbar-nav ms-auto small-profile-options">
             <% if(user) { %>
             <li class="nav-item">
-              <a class="nav-link" href="/user/index"
-                ><i class="bi bi-person-fill"></i> My Profile</a
-              >
+              <a class="nav-link" href="/user/index">
+                <img src="<%= user.avatar === user.allData.photos[0].value ? user.avatar : '/profileImages/' + user.avatar %>"
+              /> My Profile</a>
             </li>
             <% if(user.type === 'costumer') { %>
             <li class="nav-item">

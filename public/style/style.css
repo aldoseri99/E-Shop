@@ -1,6 +1,5 @@
 /* Global body style */
 body {
-
   margin: 0;
   height: 100vh;
   font-family: 'Cormorant';
@@ -267,7 +266,7 @@ main {
 
 .item-image {
   width: 400px;
-  height: "auto";
+  height: 'auto';
 }
 
 .item-card {
@@ -327,10 +326,13 @@ h1 .home-title {
   font-size: 23px;
 }
 
-
 .item-table tr td {
   vertical-align: middle;
+}
 
+.item-table {
+  font-size: 20px;
+}
 /*checkout */
 
 .checkout-header {
@@ -339,5 +341,24 @@ h1 .home-title {
 
 .checkout-table td {
   font-size: 20px;
+}
 
+.small-profile-options {
+  display: none;
+}
+.small-profile-options li a img {
+  height: 50px;
+  width: 50px;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 1px solid white;
+}
+
+@media (max-width: 991.5px) {
+  .dropdown {
+    display: none; /* Hides the dropdown when the screen is smaller than 768px */
+  }
+  .small-profile-options {
+    display: block;
+  }
 }
