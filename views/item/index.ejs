@@ -3,6 +3,7 @@
 
 <div class="item-container">
 <% items.forEach(function(item) { %>
+  <%if(item.status === 'available'){%>
 
   <a href="/item/details?id=<%= item._id %>">
 <div class="item-card" style="margin-bottom: 20px; ">
@@ -13,13 +14,13 @@
   />
 
   <h3>
-   <%= item.name %>
+    <%= item.name %>
   </h3>
 
   <p>$ <%= item.Price %></p>
 
   
-  <% if(user){ if(user.type === 'seller' || user.type === 'admin') { %>
+  <% if(user){ if((user.type === 'seller') || user.type === 'admin') { %>
   <a class="btn btn-outline-secondary" href="/item/edit?id=<%= item._id %>"><i class="fa-solid fa-pen-to-square"></i></a>
   <a class="btn btn-outline-secondary" href="/item/delete?id=<%= item._id %>"><i class="fa-solid fa-trash"></i><a>
 
@@ -28,6 +29,7 @@
     <input type="hidden" name="id" value="<%= item._id %>" />
     <button type="submit"><i class="fa-solid fa-cart-plus"></i></button>
   </form>
+  <%}%>
 
   <% } %>
 </div>

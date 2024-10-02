@@ -36,13 +36,12 @@
       </form>
 
       <a
-        href="/cart/delete?id=<%= cartItem.item._id %>"
+        href="/cart/delete?id=<%= cartItem.item._id %>&qty=<%= cartItem.qty %>"
         class="btn btn-outline-danger ms-3"
       >
         <i class="bi bi-trash"></i>
       </a>
     </div>
-
   </li>
 
   <% }); %> <% const newItem = items.map(cartItem => cartItem.item.Price *

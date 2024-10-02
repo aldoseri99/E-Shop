@@ -1,6 +1,6 @@
 const Cart = require('../models/Cart')
-const Checkout = require('../models/Checkout')
 const Order = require('../models/Order')
+const Item = require('../models/Item')
 
 exports.checkout_index_post = (req, res) => {
   try {
@@ -8,14 +8,17 @@ exports.checkout_index_post = (req, res) => {
     const total = req.body.total
     const cart = JSON.parse(req.body.cart)
 
-    console.log(cart)
-    console.log(cart._id)
+    console.log(cart.items[0])
+    console.log(cart.items[0].item)
 
     let order = new Order({
-      order: items,
       totalAmount: total,
       orderStatus: 'Processing',
-      userId: req.user._id
+      userId: req.user._id,
+      order: []
+    })
+    cart.items.forEach((item) => {
+      order.order.push(item.item)
     })
     order
       .save()
