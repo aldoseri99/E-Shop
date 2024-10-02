@@ -1,6 +1,7 @@
 <h1>Your Order</h1>
 <% if (orders.length > 0) { %>
 <ul>
+
   <% orders.forEach(order => { %> <% if(order.userId.id === user.id || user.type
   === 'admin'){%>
     <p><%= orders%></p>

@@ -1,6 +1,5 @@
 
 
-
 <div class="item-container">
 <% items.forEach(function(item) { %>
   <%if(item.status === 'available'){%>
@@ -13,8 +12,10 @@
     style="width: 200px; height: auto"
   />
 
-  <h3>
-    <%= item.name %>
+  <div class="card-body">
+  <h3 class="card-title">
+   <%= item.name %>
+
   </h3>
 
   <p>$ <%= item.Price %></p>
@@ -34,7 +35,8 @@
   <% } %>
 </div>
 </a>
-
+</div>
 
 <% }) %>
 </div>
+

@@ -67,32 +67,23 @@
             <% } } %>
           </ul>
 
-          <ul class="navbar-nav ms-auto">
-            <% if(user) { %>
-            <li class="nav-item">
-              <a class="nav-link" href="/user/index"
-                ><i class="bi bi-person-fill"></i> My Profile</a
-              >
-            </li>
-            <% if(user.type === 'costumer') { %>
-            <li class="nav-item">
-              <a class="nav-link" href="/cart/index"
-                ><i class="bi bi-bag"></i> Cart</a
-              >
-            </li>
-            <% } %>
-            <li class="nav-item">
-              <a class="nav-link" href="/logout">Logout</a>
-            </li>
-            <% } else { %>
-            <li class="nav-item">
-              <a class="nav-link" href="/auth/google">Sign In</a>
-            </li>
-            <% } %>
-          </ul>
-        </div>
-      </div>
-    </nav>
+
+        <a href="/logout">Logout</a>
+        <% } else if(user.type === 'costumer') { %>
+        <a href="/item/index">Items</a>
+        <a href="/category/index">Category</a>
+        <a href="/cart/index">Cart</a>
+
+        <a href="/user/index">My Profile</a>
+        <a href="/logout">Logout</a>
+        <% }} else{%>
+        <a href="/item/index">Items</a>
+        <a href="/category/index">Category</a>
+        <a href="/auth/google">Sign In</a>
+        <% } %>
+      </nav>
+    </header>
+
 
     <hr />
 

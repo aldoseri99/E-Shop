@@ -1,6 +1,6 @@
 /* Global body style */
 body {
-  font-family: "Cormorant";
+  font-family: 'Cormorant';
   background-color: #ffffff;
   margin: 0;
   padding: 0;
@@ -20,76 +20,7 @@ header {
   border-bottom: 2px solid #e5e5e5;
   position: relative; /* Add relative positioning for centering */
 }
-/* .logo-container {
-  display: flex;
-  align-items: center;
-}
-.text-container {
-  position: absolute;
-  left: 50%;
-  transform: translateX(-50%);
-  text-align: center;
-}
-.head {
-  font-size: 4rem;
-  margin: 0;
-  color: #262526;
-}
-.quet {
-  margin: 5px 0 0 0;
-  font-size: 1.2rem;
-  color: #0d0c0c;
-}
-.dropdown-container {
-  display: flex;
-  align-items: center;
-  gap: 30px;
-}
-.burger-container {
-  position: relative;
-  cursor: pointer;
-}
-.material-icons {
-  font-size: 36px;
-  color: #262526;
-  transition: color 0.3s ease;
-}
-.burger-container:hover .material-icons {
-  color: #ff7062;
-}
-.hidden {
-  display: none;
-}
-.burger-dropdown {
-  position: absolute;
-  /* top: 40px;
-  left: 50%;
-  transform: translateX(-50%); /* Center the dropdown */
-/* background-color: #ffffff;
-  border: 1px solid #ddd;
-  border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  display: none;
-  width: 180px;
-} */
-/* .burger-dropdown ul { */
-/* list-style: none;
-  padding: 10px 0;
-  margin: 0;
-}
-.burger-dropdown ul li {
-  padding: 8px 16px;
-}
-.burger-dropdown ul li a {
-  color: #262526;
-  text-decoration: none;
-}
-.burger-dropdown ul li:hover {
-  background-color: #f8f9fa;
-} */
-/* Show burger dropdown when clicked */
 
-/* Profile Image with Dropdown */
 .profile-container {
   position: relative;
   cursor: pointer;
@@ -221,7 +152,8 @@ h4 {
 }
 
 .table table-striped {
-  width: 50px;
+  align-self: center;
+  border: 2px;
 }
 
 /*Category style */
@@ -301,7 +233,7 @@ main {
 
 .item-image {
   width: 400px;
-  height: "auto";
+  height: 'auto';
 }
 
 .item-card {
@@ -325,6 +257,31 @@ main {
   width: 400px;
 }
 
+.card-body {
+  padding: 15px;
+  text-align: center;
+}
+.card-title {
+  font-size: 1em;
+  margin-bottom: 15px;
+}
+
+h1 .home-title {
+  size: 20px;
+  display: flex;
+  font-style: italic;
+}
+
+.home1 {
+  width: 200px;
+  height: 300px;
+}
+
+.carousel-item active {
+  box-shadow: #262526;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
 /*cart*/
 
 .cart-continue-shopping {
