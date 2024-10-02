@@ -1,25 +1,38 @@
-<h1>list items</h1>
-<% items.forEach(function(item){ %>
 
-<p>
-  <a href="/item/details?id=<%= item._id %>"> <%= item.name %> </a>
-</p>
-<label for="">price</label>
-<p><%= item.Price %></p>
 
-<% item.image.forEach(function(img) { %>
-<img
-  src="/itemImages/<%= img %>"
-  alt="<%= item.name %> image"
-  style="width: 200px; height: auto"
-/>
+
+<div class="item-container">
+<% items.forEach(function(item) { %>
+
+  <a href="/item/details?id=<%= item._id %>">
+<div class="item-card" style="margin-bottom: 20px; ">
+  <img
+    src="/itemImages/<%= item.image[0] %>"
+    alt="<%= item.name %> image"
+    style="width: 200px; height: auto"
+  />
+
+  <h3>
+   <%= item.name %>
+  </h3>
+
+  <p>$ <%= item.Price %></p>
+
+  
+  <% if(user){ if(user.type === 'seller' || user.type === 'admin') { %>
+  <a class="btn btn-outline-secondary" href="/item/edit?id=<%= item._id %>">Edit</a>
+  <a class="btn btn-outline-secondary" href="/item/delete?id=<%= item._id %>">Delete<a>
+
+  <% }}else{ %>
+  <form action="/cart/addToCart" method="POST" style="display: inline">
+    <input type="hidden" name="id" value="<%= item._id %>" />
+    <button type="submit">Add to cart</button>
+  </form>
+
+  <% } %>
+</div>
+</a>
+
+
 <% }) %>
-
-<a href="/item/edit?id=<%= item._id %>">Edit</a>
-<a href="/item/delete?id=<%= item._id %>">Delete</a>
-
-<form action="/cart/addToCart" method="POST" style="display: inline">
-  <input type="hidden" name="id" value="<%= item._id %>" />
-  <button type="submit">Add to cart</button>
-</form>
-<% }) %>
+</div>

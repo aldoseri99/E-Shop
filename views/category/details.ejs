@@ -1,8 +1,23 @@
-<% category.item.forEach(function(item){ %>
+<h3 class="category-header">
+  <a href="/category/index"> categories </a> > <%= category.name %>
+</h3>
 
-<div>
-  <h1><%= item.name %></h1>
-  <h3><%= item.Price %></h3>
+<div class="item-container">
+  <% category.item.forEach(function(item){ %>
+
+  <a href="/item/details?id=<%= item._id %>">
+    <div class="item-card" style="margin-bottom: 20px">
+      <img
+        src="/itemImages/<%= item.image[0] %>"
+        alt="<%= item.name %> image"
+        style="width: 200px; height: auto"
+      />
+
+      <h3><%= item.name %></h3>
+
+      <p>$ <%= item.Price %></p>
+    </div>
+  </a>
+
+  <% }) %>
 </div>
-
-<% }) %>

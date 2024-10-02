@@ -1,6 +1,6 @@
-<h5>Add category</h5>
+<h2 class="form-header">Add category</h2>
 
-<form action="/category/add" method="POST">
+<form action="/category/add" method="POST"  enctype="multipart/form-data">
   <div>
     <label class="form-label">name</label>
     <input
@@ -11,9 +11,19 @@
     />
   </div>
 
+  <div>
+    <label class="form-label">Image</label>
+    <input
+      class="form-control"
+      name="images"
+      type="file"
+      accept="image/*"
+    />
+  </div>
+
   
   <div class="d-grid"></div>
-    <button type="submit" class="btn btn-success btn-sm">
+    <button type="submit" class="btn btn-primary btn-sm ">
       Add category
     </button>
   </div>
