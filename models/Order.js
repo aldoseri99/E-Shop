@@ -5,7 +5,7 @@ const orderSchema = mongoose.Schema(
     order: [
       {
         type: mongoose.Schema.Types.ObjectId,
-        ref: 'Cart'
+        ref: 'Item'
       }
     ],
     totalAmount: {
