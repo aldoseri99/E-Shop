@@ -324,3 +324,13 @@ main {
 .item-detail-image {
   width: 400px;
 }
+
+/*cart*/
+
+.cart-continue-shopping {
+  color: black;
+}
+
+.cart-product-details {
+  font-size: 23px;
+}
