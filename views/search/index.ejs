@@ -14,7 +14,7 @@
             <p><%= item.Price %></p>
             <form action="/cart/addToCart" method="POST" style="display: inline">
                 <input type="text" name="id" value="<%= item._id %>" />
-                <button type="submit">Add to cart</button>
+                <button type="submit"><i class="fa-solid fa-cart-plus"></i></button>
             </form>
         </li>
     <% }); %>
