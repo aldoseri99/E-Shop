@@ -1,25 +1,35 @@
 <div class="search-container">
-    <form action="/search/index" method="GET">
-        <input type="text" name="query" placeholder="Search for items..." class="form-control" />
-        <button type="submit" class="btn btn-primary">Search</button>
-    </form>
+  <form action="/search/index" method="GET">
+    <input
+      type="text"
+      name="query"
+      placeholder="Search for items..."
+      class="form-control"
+    />
+    <button type="submit" class="btn btn-primary">Search</button>
+  </form>
 </div>
 
 <div class="items-container">
-    <% if (items.length > 0) { %>
-    <ul>
+  <% if (items.length > 0) { %>
+  <table class="table item-table">
     <% items.forEach(function(item) { %>
-        <li>
-            <h3><%= item.name %></h3>
-            <p><%= item.Price %></p>
-            <form action="/cart/addToCart" method="POST" style="display: inline">
-                <input type="text" name="id" value="<%= item._id %>" />
-                <button type="submit">Add to cart</button>
-            </form>
-        </li>
+    <tr>
+      <td>
+        <a href="/item/details?id=<%= item._id %>">
+          <img
+            src="/itemImages/<%= item.image[0] %>"
+            alt="<%= item.name %> image"
+            style="width: 200px; height: auto"
+          />
+        </a>
+      </td>
+      <td><%= item.name %></td>
+      <td><%= item.Price %></td>
+    </tr>
     <% }); %>
-    </ul>
-    <% } else { %>
-        <p><%= message %></p>
-    <%} %>
+  </table>
+  <% } else { %>
+  <p><%= message %></p>
+  <%} %>
 </div>

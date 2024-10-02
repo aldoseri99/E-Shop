@@ -5,9 +5,16 @@ const itemsSchema = mongoose.Schema(
     name: String,
     Price: Number,
     qty: Number,
+    description: String,
+    image: [String],
+    status: String, //available|not available
     category: {
       type: mongoose.Schema.Types.ObjectId,
       ref: 'Category'
+    },
+    userId: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'User'
     }
   },
   {

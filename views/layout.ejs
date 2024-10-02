@@ -4,54 +4,149 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>E-Shop App</title>
+    <script
+      src="https://kit.fontawesome.com/07d6ecaddb.js"
+      crossorigin="anonymous"
+    ></script>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css"
+      rel="stylesheet"
+    />
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css"
       rel="stylesheet"
       integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6"
       crossorigin="anonymous"
     />
-    <link rel="stylesheet" href="/css/style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cormorant:ital,wght@0,300..700;1,300..700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/style/style.css" />
   </head>
   <body>
-    <br />
-    <a href="/" class="noStyle">
-      <h1>E-Shop App</h1>
-    </a>
 
-    <nav>
-      <% if(user){ if(user.type === 'seller') { %>
-      <a href="/item/index" class="btn btn-outline-primary">Items</a>
-      <a href="/category/index" class="btn btn-outline-primary">Category</a>
-      <a href="/cart/index" class="btn btn-outline-primary">Cart</a>
-      <a href="/item/add" class="btn btn-outline-primary">Add Items</a>
-      <a href="/user/index" class="btn btn-outline-primary">My Profile</a>
-      <a href="/logout" class="btn btn-outline-primary">Logout</a>
-      <% } else if(user.type === 'admin') { %>
-      <a href="/item/index" class="btn btn-outline-primary">Items</a>
-      <a href="/cart/index" class="btn btn-outline-primary">Cart</a>
-      <a href="/user/list" class="btn btn-outline-primary">Users List</a>
-      <a href="/user/index" class="btn btn-outline-primary">My Profile</a>
-      <a href="/logout" class="btn btn-outline-primary">Logout</a>
-      <% } else if(user.type === 'customer') { %>
-      <a href="/item/index" class="btn btn-outline-primary">Items</a>
-      <a href="/category/index" class="btn btn-outline-primary">Category</a>
-      <a href="/cart/index" class="btn btn-outline-primary">Cart</a>
-      <a href="/user/index" class="btn btn-outline-primary">My Profile</a>
-      <a href="/logout" class="btn btn-outline-primary">Logout</a>
-      <% }} else{%>
-      <a href="/item/index" class="btn btn-outline-primary">Items</a>
-      <a href="/category/index" class="btn btn-outline-primary">Category</a>
-      <a href="/auth/google" class="btn btn-outline-primary">Sign In</a>
-      <% } %>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="/">
+          <img class="logo" src="/Logo/logo1.png" alt="Logo" />
+        </a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarNav"
+          aria-controls="navbarNav"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav me-auto">
+
+            <% if(user){
+              if(user.type === 'seller') { %>
+              <li class="nav-item"><a class="nav-link" href="/item/add">Add Items</a></li>
+              <li class="nav-item"><a class="nav-link" href="/category/add">Add category</a></li>
+              <li class="nav-item"><a class="nav-link" href="/order/index">Orders</a></li>
+              <li class="nav-item"><a class="nav-link" href="/item/myItems">My Items</a></li>
+            <% } else if(user.type === 'admin') { %>
+              <li class="nav-item"></li><a class="nav-link" href="/item/index">Items</a></li>
+              <li class="nav-item"><a class="nav-link" href="/category/index">Category</a></li>
+              <li class="nav-item"><a class="nav-link" href="/user/list">Users List</a></li>
+              <li class="nav-item"><a class="nav-link" href="/order/index">Orders</a></li>
+            <% } else if(user.type === 'customer') { %>
+              
+            <li class="nav-item"><a class="nav-link" href="/item/index">Items</a></li>
+            <li class="nav-item"><a class="nav-link" href="/category/index">Category</a></li>
+            <li class="nav-item"><a class="nav-link" href="/cart/index">Cart</a></li>
+            <li class="nav-item"><a class="nav-link" href="/user/index">My Profile</a></li>
+            <li class="nav-item"><a class="nav-link" href="/order/index">Orders</a></li>
+            
+            <% }%>
+            <div class="search-container">
+              <form action="/search/index" method="GET" class="search-form">
+                  <input type="text" name="query" placeholder="Search for items..." class="form-control" />
+                  <button type="submit" class="btn btn-primary"><i class="fa-solid fa-magnifying-glass"></i></button>
+              </form>
+            </div>
+            <div class="dropdown" style="right: 60px; position:absolute; margin-top: -25px;">
+              <img
+                class="dropdown-toggle pfp"
+                type="button"
+                id="dropdownMenuButton1"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+                src="<%= user.avatar === user.allData.photos[0].value ? user.avatar : '/profileImages/' + user.avatar %>"
+                alt=""
+              />
+              <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                <li><a href="/user/index">My Profile</a></li>
+                <li><a href="/logout">Logout</a></li>
+              </ul>
+            </div>
+          <%} else{%>
+              <li class="nav-item">
+                <a class="nav-link" href="/item/index">Items</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/category/index">Category</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link nav-profile" href="/auth/google">Sign In</a>
+              </li>
+              
+            <% } %>
+          </ul>
+
+
+          <ul class="navbar-nav ms-auto small-profile-options">
+            <% if(user) { %>
+            <li class="nav-item">
+              <a class="nav-link" href="/user/index">
+                <img src="<%= user.avatar === user.allData.photos[0].value ? user.avatar : '/profileImages/' + user.avatar %>"
+              /> My Profile</a>
+            </li>
+            <% if(user.type === 'costumer') { %>
+            <li class="nav-item">
+              <a class="nav-link" href="/cart/index"
+                ><i class="bi bi-bag"></i> Cart</a
+              >
+            </li>
+            <% } %>
+            <li class="nav-item">
+              <a class="nav-link" href="/logout">Logout</a>
+            </li>
+            <% } else { %>
+            <li class="nav-item">
+              <a class="nav-link" href="/auth/google">Sign In</a>
+            </li>
+            <% } %>
+          </ul>
+        </div>
+      </div>
     </nav>
 
-    <hr />
+      </nav>
+    </header>
 
-    <%- body %>
+
+  
+
+    <main><%- body %></main>
 
     <br /><br />
     <hr />
     <br />
     <div class="footer">E-Shop app &copy; 2024</div>
   </body>
+  <script
+    src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+    crossorigin="anonymous"
+  ></script>
 </html>

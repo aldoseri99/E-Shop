@@ -1,1 +1,54 @@
-<h1>Checkout Successfully</h1>
+<div class="container my-5">
+  <div class="row">
+    <div class="col-12 text-center">
+      <h1 class="checkout-header">Checkout Successfully</h1>
+      <p class="lead">Thank you for your purchase! Here are the details:</p>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-12">
+      <table class="table table-bordered table-striped checkout-table">
+        <thead class="thead-dark">
+          <tr>
+            <th>#</th>
+            <th>Image</th>
+            <th>Item</th>
+            <th>Quantity</th>
+            <th>Price</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% items.forEach((item, index) => { %>
+          <tr>
+            <td><%= index + 1 %></td>
+            <td>
+              <img
+                src="/itemImages/<%= item.item.image[0] %>"
+                alt="<%= item.item.name %>"
+                class="img-fluid"
+                style="max-height: 100px; width: auto"
+              />
+            </td>
+            <td><%= item.item.name %></td>
+            <td>x<%= item.qty %></td>
+            <td><%= item.item.Price %> BD</td>
+          </tr>
+          <% }) %>
+        </tbody>
+        <tfoot>
+          <tr class="font-weight-bold">
+            <td colspan="4" class="text-right">Total</td>
+            <td><%= total %> BD</td>
+          </tr>
+        </tfoot>
+      </table>
+    </div>
+  </div>
+
+  <div class="row mt-4">
+    <div class="col-12 text-center">
+      <a href="/" class="btn btn-primary">Continue Shopping</a>
+    </div>
+  </div>
+</div>

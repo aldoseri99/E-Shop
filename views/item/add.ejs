@@ -1,8 +1,8 @@
 <h1>Add item</h1>
 
-<form action="/item/add" method="POST">
+<form action="/item/add" method="POST" enctype="multipart/form-data">
   <div>
-    <label>category</label>
+    <label class="form-label">Category</label>
     <select name="category" class="form-control">
       <% categories.forEach(function(category){ %>
 
@@ -13,19 +13,45 @@
   </div>
 
   <div>
-    <label>name</label>
+    <label class="form-label">Name</label>
     <input type="text" name="name" class="form-control" />
   </div>
 
   <div>
-    <label>price</label>
+    <label class="form-label">Price</label>
     <input type="number" name="Price" class="form-control" />
   </div>
 
   <div>
-    <label>quantity</label>
+    <label class="form-label">Quantity</label>
     <input type="text" name="qty" class="form-control" />
   </div>
 
-  <button type="submit" class="btn btn-outline-secondary">Add items</button>
+  <input
+    type="hidden"
+    name="userId"
+    class="form-control"
+    value="<%= user._id%>"
+  />
+  <div>
+    <label class="form-label">description</label>
+    <input type="text" name="description" class="form-control" />
+  </div>
+
+  <div>
+    <label class="form-label">Image</label>
+    <input
+      class="form-control"
+      name="images"
+      type="file"
+      accept="image/*"
+      multiple
+    />
+  </div>
+
+  <input type="hidden" name="status" value="available" class="form-control" />
+
+  <button type="submit" class="btn btn-primary">
+    Add <i class="fa-solid fa-circle-plus"></i>
+  </button>
 </form>
