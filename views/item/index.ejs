@@ -6,16 +6,22 @@
       <img
         src="/itemImages/<%= item.image[0] %>"
         alt="<%= item.name %> image"
-        style="width: 200px; height: auto"
+        style="
+          width: 200px;
+          height: 200px;
+          object-fit: cover;
+          object-position: bottom;
+        "
       />
     </a>
 
     <div class="card-body">
       <h3 class="card-title"><%= item.name %></h3>
 
-      <p><%= item.Price %> BD</p>
+      <p><%= item.Price %>BD</p>
 
-      <% if(user) { if((user.type === 'seller') || user.type === 'admin') { %>
+      <% if(user) { if((user.type === 'seller' && item.userId === user._id) ||
+      user.type === 'admin') { %>
       <a class="btn btn-outline-secondary" href="/item/edit?id=<%= item._id %>">
         <i class="fa-solid fa-pen-to-square"></i>
       </a>
@@ -25,7 +31,6 @@
       >
         <i class="fa-solid fa-trash"></i>
       </a>
-      <!-- Correctly closed the tag here -->
       <% } } %>
     </div>
   </div>

@@ -5,8 +5,8 @@ exports.auth_login_google = passport.authenticate('google', {
 })
 
 exports.auth_callback_google = passport.authenticate('google', {
-  successRedirect: '/item/myItems',
-  failureRedirect: '/category/add'
+  successRedirect: '/',
+  failureRedirect: '/'
 })
 
 exports.auth_logout_google = (req, res) => {

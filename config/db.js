@@ -1,9 +1,7 @@
-const mongoose = require("mongoose")
+const mongoose = require('mongoose')
 
 mongoose
-  .connect(
-    "mongodb+srv://ali99aldoseri:And38404405@sei-11.egcwq.mongodb.net/eshop"
-  )
+  .connect(process.env.MongoDBURL)
   .then(() => {
     const db = mongoose.connection
     console.log(
@@ -11,5 +9,5 @@ mongoose
     )
   })
   .catch((err) => {
-    console.log("MongoDB not Connected" + err)
+    console.log('MongoDB not Connected' + err)
   })
