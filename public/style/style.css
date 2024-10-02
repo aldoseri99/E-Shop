@@ -231,9 +231,8 @@ h4 {
   flex-wrap: wrap;
 }
 .category-card {
-  border: 1px solid black;
   width: 18rem;
-  padding: 20px;
+  padding: 10px;
   margin: 10px;
   text-align: center;
   border-radius: 15px;
@@ -248,6 +247,11 @@ h4 {
 .category-header a {
   color: #818589;
 }
+
+.category-name {
+  color: black;
+  margin-top: 20px;
+}
 /*Form Style */
 
 .form-label {
@@ -261,23 +265,15 @@ h4 {
 /*Nav Bar */
 
 nav {
-  margin: 0;
   padding: 200;
-  overflow: hidden;
+
   background-color: #262526;
   position: -webkit-sticky;
   position: sticky;
-  top: 0;
-  float: left;
-  display: block;
-  color: white;
-
-  padding: 14px 16px;
-  text-decoration: none;
 }
 
 nav a {
-  color: white;
+  color: #262526;
   font-size: 20px;
 }
 nav a:hover {

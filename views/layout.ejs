@@ -28,40 +28,75 @@
   </head>
   <body>
     <br />
-    <header class="nav">
-      <a href="/" class="navbar-brand">
-        <img class="logo" src="/Logo/logo1.png" />
-      </a>
 
-      <nav>
-        <% if(user){ if(user.type === 'seller') { %>
-        <a href="/item/index">Items</a>
-        <a href="/category/index">Category</a>
-        <a href="/item/add">Add Items</a>
-        <a href="/user/index">My Profile</a>
-        <a href="/logout">Logout</a>
-        <% } else if(user.type === 'admin') { %>
-        <a href="/category/index">Category</a>
-        <a href="/item/index">Items</a>
-        <a href="/user/list">Users List</a>
-        <a href="/cart/index"><i class="bi bi-bag"></i></a>
 
-        <a href="/user/index"><i class="bi bi-person-fill"></i></a>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="/">
+          <img class="logo" src="/Logo/logo1.png" alt="Logo" />
+        </a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarNav"
+          aria-controls="navbarNav"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
 
-        <a href="/logout">Logout</a>
-        <% } else if(user.type === 'costumer') { %>
-        <a href="/item/index">Items</a>
-        <a href="/category/index">Category</a>
-        <a href="/cart/index">Cart</a>
-        <a href="/user/index">My Profile</a>
-        <a href="/logout">Logout</a>
-        <% }} else{%>
-        <a href="/item/index">Items</a>
-        <a href="/category/index">Category</a>
-        <a href="/auth/google">Sign In</a>
-        <% } %>
-      </nav>
-    </header>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav me-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="/item/index">Items</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/category/index">Category</a>
+            </li>
+
+            <% if(user){ if(user.type === 'seller') { %>
+            <li class="nav-item">
+              <a class="nav-link" href="/item/add">Add Items</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/category/add">Add category</a>
+            </li>
+            <% } else if(user.type === 'admin') { %>
+            <li class="nav-item">
+              <a class="nav-link" href="/user/list">Users List</a>
+            </li>
+            <% } } %>
+          </ul>
+
+          <ul class="navbar-nav ms-auto">
+            <% if(user) { %>
+            <li class="nav-item">
+              <a class="nav-link" href="/user/index"
+                ><i class="bi bi-person-fill"></i> My Profile</a
+              >
+            </li>
+            <% if(user.type === 'costumer') { %>
+            <li class="nav-item">
+              <a class="nav-link" href="/cart/index"
+                ><i class="bi bi-bag"></i> Cart</a
+              >
+            </li>
+            <% } %>
+            <li class="nav-item">
+              <a class="nav-link" href="/logout">Logout</a>
+            </li>
+            <% } else { %>
+            <li class="nav-item">
+              <a class="nav-link" href="/auth/google">Sign In</a>
+            </li>
+            <% } %>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
 
     <hr />
 

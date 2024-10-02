@@ -27,7 +27,12 @@
   accumulator + value, 0); %>
   <h3>Total: <%= totalItem %></h3>
 
-  <a href="/checkout/index"><button>Checkout</button></a>
+  <form method="POST" action="/checkout/index">
+    <input value="<%= JSON.stringify(items) %>" type="hidden" name="items" />
+    <input value="<%= JSON.stringify(cart) %>" type="hidden" name="cart" />
+    <input value="<%= totalItem %>" type="hidden" name="total" />
+    <button type="submit">submit</button>
+  </form>
 </ul>
 <% } else { %>
 <p><%= message %></p>

@@ -1,1 +1,31 @@
+<style>
+  h1 {
+    color: brown;
+  }
+  td {
+    border: 1px solid black;
+  }
+</style>
+
 <h1>Checkout Successfully</h1>
+<table class="table">
+  <% items.forEach((item, index)=>{%>
+  <tr>
+    <td><%= index+1%></td>
+    <td>
+      <img
+        src="/itemImages/<%= item.item.image[0]%>"
+        alt=""
+        style="height: 100px; width: 100px; object-fit: cover"
+      />
+    </td>
+    <td><%= item.item.name%></td>
+    <td>x<%= item.qty%></td>
+    <td><%= item.item.Price%>BD</td>
+  </tr>
+  <h1><%= item.item.name%></h1>
+  <%})%>
+  <tr>
+    <td><%= total%></td>
+  </tr>
+</table>

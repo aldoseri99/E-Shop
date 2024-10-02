@@ -1,6 +1,6 @@
 <h2 class="form-header">Add category</h2>
 
-<form action="/category/add" method="POST">
+<form action="/category/add" method="POST"  enctype="multipart/form-data">
   <div>
     <label class="form-label">name</label>
     <input
@@ -8,6 +8,16 @@
       name="name"
       placeholder="Enter category"
       class="form-control mb-3"
+    />
+  </div>
+
+  <div>
+    <label class="form-label">Image</label>
+    <input
+      class="form-control"
+      name="images"
+      type="file"
+      accept="image/*"
     />
   </div>
 
