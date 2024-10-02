@@ -8,8 +8,8 @@
       <h2 category-name><%= category.name %></h2>
 
       <% if(user){ if(user.type === 'seller' || user.type === 'admin') { %>
-      <a href="/category/edit?id=<%= category._id %>">edit</a>
-      <a href="/category/delete?id=<%= category._id %>">delete</a>
+      <a href="/category/edit?id=<%= category._id %>"><i class="fa-solid fa-pen-to-square"></i></a>
+      <a href="/category/delete?id=<%= category._id %>"><i class="fa-solid fa-trash"></i></a>
       <% } } %>
     </div>
   </a>
