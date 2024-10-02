@@ -9,18 +9,10 @@ dayjs.extend(timezone)
 
 exports.order_index_get = (req, res) => {
   Order.find()
-    .populate({
-      path: 'order',
-      populate: {
-        path: 'items.item',
-        populate: {
-          path: 'userId',
-          model: 'User'
-        }
-      }
-    })
-    .populate('userId') // Populate userId for the order
+    .populate('userId')
+    .populate('order')
     .then((orders) => {
+      console.log(orders)
       res.render('order/index', { orders, dayjs })
     })
     .catch((err) => {
@@ -37,18 +29,10 @@ exports.order_update_post = (req, res) => {
   })
     .then(() => {
       Order.find()
-        .populate({
-          path: 'order',
-          populate: {
-            path: 'items.item',
-            populate: {
-              path: 'userId',
-              model: 'User'
-            }
-          }
-        })
-        .populate('userId') // Populate userId for the order
+        .populate('userId')
+        .populate('order')
         .then((orders) => {
+          console.log(orders)
           res.render('order/index', { orders, dayjs })
         })
         .catch((err) => {

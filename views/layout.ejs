@@ -48,26 +48,59 @@
 
         <div class="collapse navbar-collapse" id="navbarNav">
           <ul class="navbar-nav me-auto">
-            <li class="nav-item">
-              <a class="nav-link" href="/item/index">Items</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="/category/index">Category</a>
-            </li>
 
-            <% if(user){ if(user.type === 'seller') { %>
+            <% if(user){
+              if(user.type === 'seller') { %>
             <li class="nav-item">
               <a class="nav-link" href="/item/add">Add Items</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="/category/add">Add category</a>
             </li>
+            <li class="nav-item"><a class="nav-link" href="/order/index">Orders</a></li>
             <% } else if(user.type === 'admin') { %>
             <li class="nav-item">
               <a class="nav-link" href="/user/list">Users List</a>
             </li>
-            <% } } %>
+            <li class="nav-item"><a class="nav-link" href="/order/index">Orders</a></li>
+            <% } else if(user.type === 'customer') { %>
+              
+            <li class="nav-item"><a class="nav-link" href="/item/index">Items</a></li>
+            <li class="nav-item"><a class="nav-link" href="/category/index">Category</a></li>
+            <li class="nav-item"><a class="nav-link" href="/cart/index">Cart</a></li>
+            <li class="nav-item"><a class="nav-link" href="/user/index">My Profile</a></li>
+            <li class="nav-item"><a class="nav-link" href="/order/index">Orders</a></li>
+            
+            <% }%>
+            <div class="dropdown" style="right: 60px; position:absolute; margin-top: -25px;">
+              <img
+                class="dropdown-toggle pfp"
+                type="button"
+                id="dropdownMenuButton1"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+                src="<%= user.avatar === user.allData.photos[0].value ? user.avatar : '/profileImages/' + user.avatar %>"
+                alt=""
+              />
+              <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                <li><a href="/user/index">My Profile</a></li>
+                <li><a href="/logout">Logout</a></li>
+              </ul>
+            </div>
+          <%} else{%>
+              <li class="nav-item">
+                <a class="nav-link" href="/item/index">Items</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/category/index">Category</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link nav-profile" href="/auth/google">Sign In</a>
+              </li>
+              
+            <% } %>
           </ul>
+
 
           <ul class="navbar-nav ms-auto">
             <% if(user) { %>
@@ -96,7 +129,11 @@
       </div>
     </nav>
 
-    <hr />
+      </nav>
+    </header>
+
+
+  
 
     <main><%- body %></main>
 

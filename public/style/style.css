@@ -1,6 +1,10 @@
 /* Global body style */
 body {
-  font-family: "Cormorant";
+
+  margin: 0;
+  height: 100vh;
+  font-family: 'Cormorant';
+
   background-color: #ffffff;
   margin: 0;
   padding: 0;
@@ -18,7 +22,7 @@ header {
   background-color: #262526;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
   border-bottom: 2px solid #e5e5e5;
-  position: relative; /* Add relative positioning for centering */
+  position: relative;
 }
 
 .profile-container {
@@ -222,6 +226,17 @@ nav a:hover {
 
 main {
   padding: 20px;
+}
+
+.pfp {
+  height: 100px;
+  width: 100px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid white;
+}
+.dropdown-menu {
+  padding-right: 10px;
 }
 
 /*item style */
