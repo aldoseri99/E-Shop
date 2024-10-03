@@ -1,6 +1,5 @@
 <div class="container">
   <div class="row justify-content-center">
-    <!-- Thumbnail column (left side) -->
     <div class="col-md-2 mx-auto">
       <div class="carousel-thumbnails d-flex flex-column align-items-center">
         <% item.image.forEach((img, index) => { %>
@@ -21,7 +20,6 @@
       </div>
     </div>
 
-    <!-- Carousel column -->
     <div class="col-md-5 mx-auto">
       <div id="carouselExample" class="carousel slide">
         <div class="carousel-inner">
@@ -39,21 +37,23 @@
       </div>
     </div>
 
-    <!-- Item description column -->
     <div class="col-md-5 mx-auto">
       <div>
         <h3><%= item.name %></h3>
 
-        <h3>$ <%= item.Price %></h3>
-
+        <h3>$ <%= item.Price %>BD</h3>
+        <%if(user){ if(!user.type === 'seller'&&!user.type === 'admin'){%>
         <form action="/cart/addToCart" method="POST" style="display: inline">
           <input type="hidden" name="id" value="<%= item._id %>" />
-          <button class="btn btn-primary" type="submit">Add to cart</button>
+          <button class="btn btn-primary" type="submit">
+            <i class="fa-solid fa-cart-plus"></i>
+          </button>
         </form>
+        <%}}%>
 
         <hr />
         <h3>Description</h3>
-        <p><%= item.description %></pp>
+        <p><%= item.description %></p>
       </div>
     </div>
   </div>

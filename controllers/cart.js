@@ -6,30 +6,32 @@ exports.cart_addToCart_post = async (req, res) => {
   const userId = req.user._id
 
   try {
-    //get user cart
     let cart = await Cart.findOne({ userId: userId })
     console.log(cart)
 
-    //if it does not exist create one with empty items array
     if (!cart) {
       cart = new Cart({ userId: userId, items: [] })
     }
-
-    //check if the item exist in the items array
     const existingItem = cart.items.find((cartItem) =>
       cartItem.item.equals(itemId)
     )
 
-    //if it does exist just increase the quantity
     if (existingItem) {
       existingItem.qty += 1
     } else {
-      //if it does not add it with qty 1
       cart.items.push({ item: itemId, qty: 1 })
     }
 
-    //save changes
     await cart.save()
+
+    let item = await Item.findById(itemId)
+    item.qty -= 1
+    if (item.qty === 0) {
+      item.status = 'not available'
+    } else {
+      item.status = 'available'
+    }
+    await item.save()
 
     res.redirect('/cart/index')
   } catch (err) {
@@ -51,7 +53,7 @@ exports.cart_index_get = (req, res) => {
       }
 
       const items = cart.items
-      res.render('cart/index', { items })
+      res.render('cart/index', { items, cart })
     })
     .catch((err) => {
       console.log(err)
@@ -71,7 +73,15 @@ exports.cart_delete_get = (req, res) => {
     { $pull: { items: { item: itemId } } },
     { new: true }
   )
-    .then(() => {
+    .then(async () => {
+      let item = await Item.findById(itemId)
+      item.qty += req.query.qty
+      if (item.qty === 0) {
+        item.status = 'not available'
+      } else {
+        item.status = 'available'
+      }
+      await item.save()
       res.redirect('/cart/index')
     })
     .catch((err) => {
@@ -98,6 +108,15 @@ exports.cart_increase_post = async (req, res) => {
 
     await cart.save()
 
+    let item = await Item.findById(itemId)
+    item.qty -= 1
+    if (item.qty === 0) {
+      item.status = 'not available'
+    } else {
+      item.status = 'available'
+    }
+    await item.save()
+
     res.redirect('/cart/index')
   } catch (err) {
     console.log(err)
@@ -109,22 +128,32 @@ exports.cart_decrease_post = async (req, res) => {
   const itemId = req.body.id
   const userId = req.user._id
 
-  try {
-    let cart = await Cart.findOne({ userId: userId })
+  let item = await Item.findById(itemId)
+  if (item.qty > 0)
+    try {
+      let cart = await Cart.findOne({ userId: userId })
 
-    const existingItem = cart.items.find((cartItem) =>
-      cartItem.item.equals(itemId)
-    )
+      const existingItem = cart.items.find((cartItem) =>
+        cartItem.item.equals(itemId)
+      )
 
-    if (existingItem.qty > 1) {
-      existingItem.qty -= 1
+      if (existingItem.qty > 1) {
+        existingItem.qty -= 1
+      }
+
+      await cart.save()
+
+      item.qty += 1
+      if (item.qty === 0) {
+        item.status = 'not available'
+      } else {
+        item.status = 'available'
+      }
+      await item.save()
+
+      res.redirect('/cart/index')
+    } catch (err) {
+      console.log(err)
+      res.status(500).send('Error updating cart')
     }
-
-    await cart.save()
-
-    res.redirect('/cart/index')
-  } catch (err) {
-    console.log(err)
-    res.status(500).send('Error updating cart')
-  }
 }

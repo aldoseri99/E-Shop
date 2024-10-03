@@ -1,4 +1,4 @@
-const express = require("express")
+const express = require('express')
 
 const router = express.Router()
 
@@ -6,18 +6,20 @@ const router = express.Router()
 
 router.use(
   express.urlencoded({
-    extended: true,
+    extended: true
   })
 )
 
+const ensreLoggedIn = require('../config/ensureLoggedin')
+
 //imoprt controller
 
-const cartCntrl = require("../controllers/cart")
+const cartCntrl = require('../controllers/cart')
 
-router.get("/index", cartCntrl.cart_index_get)
-router.post("/addToCart", cartCntrl.cart_addToCart_post)
-router.get("/delete", cartCntrl.cart_delete_get)
-router.post("/increase", cartCntrl.cart_increase_post)
-router.post("/decrease", cartCntrl.cart_decrease_post)
+router.get('/index', ensreLoggedIn, cartCntrl.cart_index_get)
+router.post('/addToCart', ensreLoggedIn, cartCntrl.cart_addToCart_post)
+router.get('/delete', ensreLoggedIn, cartCntrl.cart_delete_get)
+router.post('/increase', ensreLoggedIn, cartCntrl.cart_increase_post)
+router.post('/decrease', ensreLoggedIn, cartCntrl.cart_decrease_post)
 
 module.exports = router

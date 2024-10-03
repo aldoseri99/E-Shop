@@ -1,4 +1,4 @@
-const mongoose = require("mongoose")
+const mongoose = require('mongoose')
 
 const itemsSchema = mongoose.Schema(
   {
@@ -7,6 +7,7 @@ const itemsSchema = mongoose.Schema(
     qty: Number,
     description: String,
     image: [String],
+    status: String, //available|not available
     category: {
       type: mongoose.Schema.Types.ObjectId,
       ref: 'Category'
@@ -15,13 +16,12 @@ const itemsSchema = mongoose.Schema(
       type: mongoose.Schema.Types.ObjectId,
       ref: 'User'
     }
-
   },
   {
-    timestamps: true,
+    timestamps: true
   }
 )
 
-const Item = mongoose.model("Item", itemsSchema)
+const Item = mongoose.model('Item', itemsSchema)
 
 module.exports = Item

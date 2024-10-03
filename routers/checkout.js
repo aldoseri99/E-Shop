@@ -9,8 +9,9 @@ router.use(
   })
 )
 
+const ensureLoggedIn = require('../config/ensureLoggedin')
 const checkoutCntrl = require('../controllers/checkout')
 
-router.get('/index', checkoutCntrl.checkout_index_get)
+router.post('/index', ensureLoggedIn, checkoutCntrl.checkout_index_post)
 
 module.exports = router

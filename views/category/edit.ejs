@@ -1,6 +1,6 @@
 <h2>Update category</h2>
 
-<form action="/category/update" method="POST">
+<form action="/category/update" method="POST" enctype="multipart/form-data">
   <div>
     <label class="form-label">name</label>
     <input
@@ -12,10 +12,22 @@
     />
   </div>
 
+  <div>
+    <label class="form-label">Image</label>
+    <input
+      class="form-control"
+      name="images"
+      type="file"
+      accept="image/*"
+    />
+  </div>
+
+  
+
   
   <div class="d-grid"></div>
     <button type="submit" class="btn btn-primary btn-sm">
-      update category
+      Update <i class="fa-solid fa-circle-check"></i>
     </button>
   </div>
 

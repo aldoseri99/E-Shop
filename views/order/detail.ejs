@@ -1,0 +1,32 @@
+<a class="btn btn-primary" href="/order/index">Back</a>
+<table class="table checkout-table" style="vertical-align: middle">
+  <tr>
+    <td colspan="2">
+      Purchased At: <%= dayjs(order.createdAt).utc(true).format('D MMM, YYYY')%>
+    </td>
+    <td colspan="2">Status: <%= order.orderStatus%></td>
+  </tr>
+  <% order.order.forEach((items)=>{%>
+  <tr>
+    <td>
+      <img
+        src="/itemImages/<%= items.item.image[0]%>"
+        alt=""
+        style="
+          width: 200px;
+          height: 200px;
+          object-fit: cover;
+          object-position: bottom;
+        "
+      />
+    </td>
+    <td><%= items.item.name%></td>
+    <td>x<%= items.qty%></td>
+    <td><%= items.item.Price%>BD</td>
+  </tr>
+  <%})%>
+  <tr>
+    <td colspan="3"></td>
+    <td>Total: <%= order.totalAmount%>$</td>
+  </tr>
+</table>
