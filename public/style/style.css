@@ -198,10 +198,8 @@ h4 {
 }
 
 /*Nav Bar */
-
 nav {
   padding: 200;
-
   background-color: #262526;
   position: -webkit-sticky;
   position: sticky;
@@ -318,30 +316,36 @@ h6 {
   font-size: 25px;
 }
 
-
-
 .twelve h1 {
-  font-size:26px; font-weight:700;  letter-spacing:1px; text-transform:uppercase; width:160px; text-align:center; margin:auto; white-space:nowrap; padding-bottom:13px;
+  font-size: 26px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  width: 160px;
+  text-align: center;
+  margin: auto;
+  white-space: nowrap;
+  padding-bottom: 13px;
 }
 .twelve h1:before {
-    background-color: #c50000;
-    content: '';
-    display: block;
-    height: 3px;
-    width: 75px;
-    margin-bottom: 5px;
+  background-color: #c50000;
+  content: '';
+  display: block;
+  height: 3px;
+  width: 75px;
+  margin-bottom: 5px;
 }
 .twelve h1:after {
-    background-color: #c50000;
-    content: '';
-    display: block;
-  position:absolute; right:0; bottom:0;
-    height: 3px;
-    width: 75px;
-    margin-bottom: 0.25em;
+  background-color: #c50000;
+  content: '';
+  display: block;
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  height: 3px;
+  width: 75px;
+  margin-bottom: 0.25em;
 }
-
-
 
 .carousel-item active {
   box-shadow: #262526;
@@ -359,7 +363,7 @@ img {
 #carouselExampleSlidesOnly {
   display: flex;
   justify-content: center;
-
+}
 /*cart*/
 
 .cart-continue-shopping {
@@ -412,7 +416,6 @@ img {
 
 footer {
   background-color: #ff7062;
-  /* height: px; */
   display: flex;
   justify-content: center;
   align-items: end;
@@ -422,7 +425,7 @@ footer {
 
 @media (max-width: 991.5px) {
   .dropdown {
-    display: none; /* Hides the dropdown when the screen is smaller than 768px */
+    display: none;
   }
   .small-profile-options {
     display: block;
