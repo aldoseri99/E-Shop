@@ -198,10 +198,8 @@ h4 {
 }
 
 /*Nav Bar */
-
 nav {
   padding: 200;
-
   background-color: #262526;
   position: -webkit-sticky;
   position: sticky;
@@ -418,7 +416,6 @@ img {
 
 footer {
   background-color: #ff7062;
-  /* height: px; */
   display: flex;
   justify-content: center;
   align-items: end;
@@ -439,7 +436,7 @@ container.home {
 
 @media (max-width: 991.5px) {
   .dropdown {
-    display: none; /* Hides the dropdown when the screen is smaller than 768px */
+    display: none;
   }
   .small-profile-options {
     display: block;
