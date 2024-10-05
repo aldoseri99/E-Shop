@@ -423,6 +423,17 @@ footer {
   font-weight: 800;
 }
 
+container.home {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.carousel-item img {
+  width: 1080px;
+  height: 600px;
+}
+
 @media (max-width: 991.5px) {
   .dropdown {
     display: none;
