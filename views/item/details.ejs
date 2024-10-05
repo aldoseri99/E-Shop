@@ -42,7 +42,7 @@
         <h3><%= item.name %></h3>
 
         <h3>$ <%= item.Price %>BD</h3>
-        <%if(user){ if(!user.type === 'seller'&&!user.type === 'admin'){%>
+        <%if(user){ if(user.type !== 'seller'&&user.type !== 'admin'){%>
         <form action="/cart/addToCart" method="POST" style="display: inline">
           <input type="hidden" name="id" value="<%= item._id %>" />
           <button class="btn btn-primary" type="submit">

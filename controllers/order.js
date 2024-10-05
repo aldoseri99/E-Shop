@@ -51,7 +51,6 @@ exports.order_detail_post = (req, res) => {
     })
     .populate('userId')
     .then((order) => {
-      console.log(order)
       res.render('order/detail', { order, dayjs })
     })
     .catch((err) => {

@@ -8,9 +8,6 @@ exports.checkout_index_post = (req, res) => {
     const total = req.body.total
     const cart = JSON.parse(req.body.cart)
 
-    console.log(cart.items[0])
-    console.log(cart.items[0].item)
-
     let order = new Order({
       totalAmount: total,
       orderStatus: 'Processing',
