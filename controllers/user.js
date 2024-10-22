@@ -31,7 +31,6 @@ exports.user_edit_post = (req, res) => {
     }
   })
     .then(() => {
-      console.log(req.file)
       res.redirect('/user/index')
     })
     .catch((err) => {

@@ -17,9 +17,6 @@ const storage = multer.diskStorage({
 upload = multer({ storage })
 
 exports.item_add_post = (req, res) => {
-  console.log('req body =', req.body)
-  console.log('req files =', req.files)
-
   if (!req.files) {
     return res.status(400).send('No files uploaded.')
   }
@@ -81,7 +78,6 @@ exports.item_index_get = (req, res) => {
 }
 
 exports.item_delete_get = (req, res) => {
-  console.log(req.query.id)
   Item.findByIdAndUpdate(req.query.id, {
     $set: {
       status: 'not available'
@@ -96,7 +92,6 @@ exports.item_delete_get = (req, res) => {
 }
 
 exports.item_edit_get = (req, res) => {
-  console.log(req.query.id)
   Item.findById(req.query.id)
     .then((item) => {
       return Category.find().then((categories) => {
@@ -140,7 +135,6 @@ exports.item_update_post = async (req, res) => {
 exports.item_details_get = (req, res) => {
   Item.findById(req.query.id)
     .then((item) => {
-      console.log(item)
       res.render('item/details', { item })
     })
     .catch((err) => {
@@ -151,8 +145,6 @@ exports.item_details_get = (req, res) => {
 exports.item_sellerItems_get = (req, res) => {
   Item.find({ userId: new ObjectId(req.user._id) })
     .then((items) => {
-      console.log(items)
-      console.log(req.user._id)
       res.render('item/myItems', { items })
     })
     .catch((err) => {

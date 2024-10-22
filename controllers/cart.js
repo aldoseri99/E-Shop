@@ -7,7 +7,6 @@ exports.cart_addToCart_post = async (req, res) => {
 
   try {
     let cart = await Cart.findOne({ userId: userId })
-    console.log(cart)
 
     if (!cart) {
       cart = new Cart({ userId: userId, items: [] })
